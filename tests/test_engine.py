@@ -91,3 +91,15 @@ async def test_state_carries_rewrite_and_household():
     texts = [c["sms"]["text"] for c in fj.calls]
     assert texts[0] == MSGS["S01"].text and len(set(texts)) == 4
     assert "billers_on_file" in fj.calls[0]["household"]
+
+
+async def test_review_risk_low_for_stable_hold_high_for_brittle_pay():
+    from doubletake.engine import review_risk
+    hold = answers(0.02, scam=0.95, genuine=0.05, choice_override="hold")
+    for i in range(5):
+        hold[f"a{i}"]["probabilities"] = {"pay": 0.02, "hold": 0.95, "ignore": 0.03}
+    stable_hold = await run("S02", [hold])
+    brittle_pay = await run("G02", [answers(0.9), answers(0.3), answers(0.35), answers(0.4)])
+    assert review_risk(stable_hold.to_dict()) < 0.1
+    assert review_risk(brittle_pay.to_dict()) > 0.3
+    assert brittle_pay.risk == review_risk(brittle_pay.to_dict())

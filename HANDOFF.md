@@ -149,3 +149,19 @@ Architecture: `docs/ARCHITECTURE.md`.
   (Jev only ₹19,543 / 2 scams; Jev+LLM and DT ₹17,654 / 0 scams / 14 held). H opens H6 (Jev "Pay now" 0.75, 4/35 disagree, brittleness 0.33, alert shown).
   A live custom lookalike-link message: Jev base pay 0.62, 18/35 disagree, held in 4.6 s. No console errors. Fixed a blank-thread flash (smooth scroll removed).
 - **Next:** card #11, the eval dataset and harness (`eval/`, writes `data/runs/eval-<ts>.json`).
+
+### 2026-09-27 12:38 IST: Run 11 (card #11, eval dataset + harness)
+- **Done:** `eval/build_dataset.py` → `data/messages/eval.jsonl` (**328** = gold 24 + heroes 6 + red-team rt-001..048 + synthetic ds-0001..0250 from seeded templates:
+  96 bills, 152 scams, 80 no-action). `eval/run_eval.py [--limit N] [--refresh]` → `data/runs/eval-<ts>.json` with per-message rows, a mode table
+  (all / gold / by set), counts, and catch rates. The eval cache is `data/cache/eval/` (gitignored); gold and heroes reuse the stage cache.
+  Added the 4th variant **`double_take_jev`** = Double Take's 36 answers + flags **without the LLM** (computed from the same answers).
+- **Changed:** the ranking score is now `engine.review_risk(ex)` = how shaky Jev's *own* answer is (instability of the base action across the 19 action re-asks;
+  for a base "pay", also brittleness, scam re-asks and hard flags). The old score ranked scams Jev already held at the top, which are useless for review.
+- **Verified (real APIs, run `eval-1790492806`, 203 s, 0 failures, ≈$1):**
+  - Jev only: **15/152 scams paid** (13 red-team, 2 heroes; 0 on gold and synthetic), 0/96 bills held, $0.00009/msg.
+  - Jev + LLM: 0 scams paid, 0 bills held, $0.0027/msg. Double Take: 0 / 0, $0.0030/msg. **DT without LLM: 0 / 0 at $0.00035/msg (7.7× cheaper than Jev+LLM).**
+  - Shared confident errors: **0** (gpt-6-sol caught every scam Jev paid). Confident Jev errors: 1 (rt-024, conf 0.86), which DT ranks in the top 5%; low confidence misses it even at 20%.
+  - Catching Jev's 15 errors at review 5/10/20%: **DT risk 12/14/15** vs low confidence 8/12/12.
+- **Honest framing for the eval page:** the mockup's claim ("finds the errors that confidence cannot see") holds for *Jev errors* and the confident error, but there are
+  no *shared* confident errors on this set. The strongest real result is that DT's Jev-only check matches Jev+LLM safety at about 1/8 the cost.
+- **Next:** card #12, the eval UI page (`web/eval.html`) drawn from `/api/runs/latest`.

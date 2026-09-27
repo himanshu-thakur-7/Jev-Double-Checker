@@ -156,16 +156,16 @@
   {
     "id": 11,
     "title": "Eval dataset + harness",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 3,
     "rank": 11,
     "description": "eval/build_dataset.py: 328 msgs = gold 24 + red-team rewrites rt-* (LLM generated, cached) + ds-* synthetic. eval/run_eval.py: all 3 modes, shared confident errors (Jev wrong conf>=0.8 & LLM same mistake), catch-rate at review 5/10/20% ranking by low-confidence vs DT risk, gold table, cost per msg. Writes data/runs/eval-<ts>.json.",
     "done_when": "Run file produced from real API calls; numbers not placeholders.",
-    "implementation_notes": null,
+    "implementation_notes": "eval/build_dataset.py (328: gold24 hero6 rt48 ds250 seeded), eval/run_eval.py (3 modes + DT-without-LLM, shared confident errors, catch@5/10/20 by low-conf vs DT review_risk). Run eval-1790492806: Jev-only paid 15/152 scams; Jev+LLM, DT and DT-no-LLM paid 0 and held 0/96 bills; DT-no-LLM $0.00035/msg vs Jev+LLM $0.0027.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:08:41",
+    "completed_at": "2026-09-27 07:08:41"
   },
   {
     "id": 12,

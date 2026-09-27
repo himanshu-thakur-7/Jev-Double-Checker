@@ -6,7 +6,6 @@ run `python scripts/board.py import` to recreate it.
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
 | 7 | todo | L3 | Cross-examination engine + 3 modes | Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only. |
-| 11 | todo | L3 | Eval dataset + harness | Run file produced from real API calls; numbers not placeholders. |
 | 12 | todo | L2 | Eval UI page | Matches mockup, real numbers. |
 | 13 | todo | L3 | Failproof gate policy + Codex agent demo | Gate returns ALLOW for G01-G04, DENY for S01/S07; log persisted. |
 | 14 | todo | L2 | Failproof log + Ledger tabs live in UI | Button run shows log lines live. |
@@ -21,3 +20,4 @@ run `python scripts/board.py import` to recreate it.
 | 8 | done | L2 | Precompute cache + replay | data/cache populated & committed; server replays without network. |
 | 9 | done | L3 | FastAPI server + API | pytest TestClient tests pass; uvicorn runs. |
 | 10 | done | L3 | Stage UI (live, matches mockup) | Visually matches docs/mockups/stage.html in browser; works on cache. |
+| 11 | done | L3 | Eval dataset + harness | Run file produced from real API calls; numbers not placeholders. |

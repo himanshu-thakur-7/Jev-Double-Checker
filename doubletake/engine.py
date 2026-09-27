@@ -186,11 +186,29 @@ def decide(msg: Message, cells: list[Cell], flags: list[Flag], op: SecondOpinion
     return d, brit, disagree, n, max_scam
 
 
-def risk_score(brittleness: float, max_scam: float, flags: list[Flag]) -> float:
-    """Ranking score used to pick which messages a human reviews first."""
-    hard = 1.0 if has_hard(flags) else 0.0
-    soft = sum(f.severity == "soft" for f in flags)
-    return round(max(brittleness, max_scam, hard) + 0.02 * soft, 4)
+def review_risk(ex: dict) -> float:
+    """How likely Jev's base answer is wrong: the score used to pick which messages a human reviews first.
+
+    Instability is the mean probability the other 19 action re-asks put on anything but the base action.
+    When the base answer is "pay", the evidence against paying (brittleness, scam re-asks, flags) also counts.
+    A message Jev already holds with stable answers is low risk: it goes to Rahul anyway.
+    """
+    cells = [c for row in ex["grid"] for c in row]
+    base = next(c for c in cells if c.get("base"))
+    others = [c for c in cells if c["kind"] == "action" and not c.get("base")]
+    stay = []
+    for c in others:  # P(base action) for this re-ask: known for its argmax, approximated by p_pay for "pay"
+        if base["value"] == "pay":
+            stay.append(c["p_pay"])
+        else:
+            stay.append(c["p"] if c["value"] == base["value"] else 0.0)
+    instability = 1 - sum(stay) / len(stay)
+    if base["value"] != "pay":
+        return round(instability, 4)
+    flags = ex.get("flags", [])
+    hard = 1.0 if any(f["severity"] == "hard" for f in flags) else 0.0
+    soft = sum(f["severity"] == "soft" for f in flags)
+    return round(max(instability, ex["brittleness"], ex["max_scam"], hard) + 0.02 * soft, 4)
 
 
 def alert_card(msg: Message, flags: list[Flag], biller_name: str | None, disagree: int, n: int) -> dict:
@@ -265,7 +283,7 @@ class Engine:
         alert = alert_card(msg, flags, biller.name if biller else None, disagree, n) \
             if decisions["double_take"].action == "hold" else None
         jev_cost = sum(r.cost_usd for r in results)
-        return Examination(
+        exam = Examination(
             message=msg.model_dump(), rewrites=rewrites, grid=grid,
             base={"action": base.value, "confidence": base.confidence, "p": base.p},
             flags=[f.to_dict() for f in flags], biller=biller.id if biller else None,
@@ -273,7 +291,7 @@ class Engine:
                 "verdict": op.verdict, "action": op.action, "scam_probability": op.scam_probability,
                 "reason": op.reason, "agrees_pay": op.agrees_pay, "model": op.model},
             brittleness=brit, disagree=disagree, reasks=n, max_scam=max_scam,
-            risk=risk_score(brit, max_scam, flags),
+            risk=0.0,
             decisions={k: asdict(v) for k, v in decisions.items()}, alert=alert,
             cost={"jev_usd": jev_cost, "jev_calls": len(results), "jev_ms": round(jev_ms),
                   "jev_only_usd": jev_cost / len(results),  # one call carries the state; that dominates tokens
@@ -281,3 +299,5 @@ class Engine:
                   "llm_usd": op.cost_usd if op else 0.0, "llm_ms": round(op.latency_ms) if op else 0,
                   "wall_ms": round((time.perf_counter() - t0) * 1000)},
             model=results[0].model, errors=errors)
+        exam.risk = review_risk(exam.to_dict())
+        return exam

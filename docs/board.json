@@ -198,16 +198,16 @@
   {
     "id": 14,
     "title": "Failproof log + Ledger tabs live in UI",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 2,
     "rank": 14,
     "description": "Stream gate decisions (SSE) into Failproof log tab; 'Run Codex under Failproof' button triggers demo run; Ledger tab lists payments.",
     "done_when": "Button run shows log lines live.",
-    "implementation_notes": null,
+    "implementation_notes": "SSE log streams live during agent run, reset event clears the log per run, running/final states, runner shown; Ledger tab (done in #10). Browser-verified live run: 5 lines at 9s, 8 + final message at end.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:20:09",
+    "completed_at": "2026-09-27 07:20:09"
   },
   {
     "id": 15,

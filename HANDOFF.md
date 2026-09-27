@@ -189,3 +189,10 @@ Architecture: `docs/ARCHITECTURE.md`.
   The stage's Failproof log tab shows all 8 lines (browser-verified).
 - **Not done / needs the owner:** Codex CLI and failproofai are **not installed** on this machine. I didn't install global tools without asking. Wiring is documented in demo/README.md.
 - **Next:** card #14, live Failproof log + Ledger in the UI. SSE and the Ledger tab already exist; what's left is verifying the button run streams live and polishing.
+
+### 2026-09-27 12:50 IST: Run 14 (card #14, live Failproof log + Ledger)
+- **Done:** `POST /api/agent/run` clears the gate log and pushes a `{"type":"reset"}` SSE event, so each run starts fresh. The stage shows "Working through the inbox…"
+  while the agent runs, then the agent's final message with the runner name (and the note under the button). The Ledger tab already existed from card #10.
+- **Verified in the browser:** pressing "Run Codex under Failproof" showed 5 gate lines streaming in after 9 s, then all 8 (6 ALLOW, S01/S07 DENY) plus the final message.
+  pytest 88/88 (new test: 503 without a key, log cleared on run).
+- **Next:** card #15, E2E verification + README polish (fresh-clone walkthrough).

@@ -231,6 +231,9 @@ async def agent_run(request: Request):
     if S.agent_busy:
         raise HTTPException(409, "An agent run is already in progress.")
     S.agent_busy = True
+    clear_gate_log()
+    for q in list(S.listeners):
+        q.put_nowait({"type": "reset"})
     try:
         return await agent.run(str(request.base_url).rstrip("/"))
     finally:

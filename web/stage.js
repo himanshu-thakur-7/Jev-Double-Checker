@@ -172,7 +172,8 @@ function renderLog() {
   const ag = st.agent;
   return `<div class="cx"><h2>Live run: Codex agent under Failproof</h2><div class="sub">Policy double-take-gate on PreToolUse. Every pay_bill call asks POST /api/gate first.</div></div>
     <div class="log">${rows || `<div class="note">No gate decisions yet. Press “Run Codex under Failproof”.</div>`}</div>
-    ${ag?.final ? `<div class="agent"><small>${esc(ag.agent || "Agent")}, final message</small>${esc(ag.final)}</div>` : ""}`;
+    ${ag?.final ? `<div class="agent"><small>${esc(ag.agent || "Agent")}, final message · ${esc(ag.runner || "")}</small>${esc(ag.final)}</div>`
+      : st.agentRunning ? `<div class="agent"><small>Agent</small>Working through the inbox…</div>` : ""}`;
 }
 
 async function renderLedger() {
@@ -222,7 +223,11 @@ function openHero() {
 
 function subscribeGate() {
   const es = new EventSource("/api/gate/stream");
-  es.onmessage = (ev) => { st.gate.push(JSON.parse(ev.data)); if (st.tab === "log") renderPanel(); };
+  es.onmessage = (ev) => {
+    const e = JSON.parse(ev.data);
+    if (e.type === "reset") { st.gate = []; st.agent = null; } else st.gate.push(e);
+    if (st.tab === "log") renderPanel();
+  };
 }
 
 // events
@@ -262,12 +267,13 @@ $("#send").addEventListener("submit", async (e) => {
   $("#send-btn").disabled = false; renderAll();
 });
 $("#run-agent").addEventListener("click", async () => {
-  st.tab = "log"; renderPanel();
+  st.tab = "log"; st.agent = null; st.agentRunning = true; renderPanel();
   $("#run-agent").disabled = true; $("#run-agent").classList.add("pri"); $("#run-agent").textContent = "Codex run in progress…";
   try {
     st.agent = await api("/api/agent/run", { method: "POST" });
     $("#agent-note").textContent = st.agent.runner ? `Runner: ${st.agent.runner}` : "";
   } catch (err) { $("#agent-note").innerHTML = `<span class="err">${esc(err.message)}</span>`; }
+  st.agentRunning = false;
   $("#run-agent").disabled = false; $("#run-agent").classList.remove("pri"); $("#run-agent").textContent = "Run Codex under Failproof";
   renderPanel();
 });

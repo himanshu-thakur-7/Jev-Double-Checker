@@ -55,3 +55,18 @@ def test_pages(client):
 def test_latest_run_available(client):
     r = client.get("/api/runs/latest").json()
     assert r["messages"] == 328 and "double_take_jev" in r["all"]
+
+
+def test_agent_run_needs_key_and_clears_log(client, monkeypatch):
+    client.post("/api/gate", json={"tool_input": {"bill_id": "G01", "amount": 1240}})
+    monkeypatch.setattr(appmod.config, "OPENAI_API_KEY", "")
+    assert client.post("/api/agent/run").status_code == 503
+
+    async def fake_run(url):
+        return {"runner": "fake", "final": "done", "calls": []}
+    monkeypatch.setattr(appmod.config, "OPENAI_API_KEY", "k")
+    import doubletake.agent as agent
+    monkeypatch.setattr(agent, "run", fake_run)
+    r = client.post("/api/agent/run").json()
+    assert r["runner"] == "fake"
+    assert client.get("/api/gate/log").json()["entries"] == []

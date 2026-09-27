@@ -24,3 +24,15 @@ message ──► perturb.py (R0..R3) ──► jev.py  (4 calls × 9 questions 
 For the 35 re-asks (all but the base): for action questions, the probability mass on actions other than the base
 action; for scam/genuine nouls, the probability that contradicts paying. Brittleness is the mean of these.
 "k of 35 disagree" counts re-asks whose argmax contradicts the base.
+
+## Review risk (for ranking messages a human should look at)
+`engine.review_risk(ex)`: instability of Jev's base action across the 19 action re-asks. When the base is "pay", it is raised by brittleness,
+the highest scam re-ask and hard flags (plus 0.02 per soft flag). A message Jev already holds with stable answers scores low, because it goes to Rahul anyway.
+
+## Double Take without the LLM
+Computed in the eval from the same answers (`double_take_jev`): hold a Jev "pay" if brittleness > τ, any scam re-ask ≥ 0.70, or a hard flag fires.
+On the 328-message run it matched Jev + LLM (0 scams paid, 0 bills held) at $0.00035 per message.
+
+## Gate
+`POST /api/gate` ← `failproof/double_take_gate.py` (Codex / Claude Code command hook) or `.failproofai/policies/double-take-gate.mjs`.
+Allow only when Double Take would pay and the amount matches the bill. Everything fails closed.

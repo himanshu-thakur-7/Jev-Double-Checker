@@ -196,3 +196,19 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Verified in the browser:** pressing "Run Codex under Failproof" showed 5 gate lines streaming in after 9 s, then all 8 (6 ALLOW, S01/S07 DENY) plus the final message.
   pytest 88/88 (new test: 503 without a key, log cleared on run).
 - **Next:** card #15, E2E verification + README polish (fresh-clone walkthrough).
+
+### 2026-09-27 12:52 IST: Run 15 (card #15, E2E verification + README), **all 16 cards done**
+- **Verified from a fresh `git clone`:** no `.env` or key strings in the repo; `uv pip install -e ".[dev]"` and `pytest` give 88/88. The server **without API keys**
+  replays all 30 cached stage messages, serves `/` and `/eval` (the latest run), and answers the gate (S07 → deny). Live endpoints return a clear 503.
+- **Done:** README rewritten (real results table, quick start, how it works, repo map, re-run commands, Failproof/Codex). ARCHITECTURE.md now covers review risk,
+  DT-without-LLM and the gate. The Starlette test-client deprecation warning is filtered in pyproject.
+- **State of the build:** every kanban card is done (see docs/BOARD.md). Stage, eval page, engine, 328-message eval, Failproof policy and hook, and the gated demo agent all work against the real APIs.
+
+## Open items / ideas for whoever picks this up
+1. **Codex CLI and failproofai are not installed** on the dev machine. The stage button falls back to the built-in gpt-6-luna loop (it says so). To demo real Codex:
+   `npm i -g @openai/codex failproofai`, then follow demo/README.md. `agent.run_codex` has not been exercised yet, so test it.
+2. **No shared confident errors** exist on the current eval set. To demonstrate the mockup's headline claim, hunt harder for scams that fool both Jev (conf ≥ 0.8)
+   and gpt-6-sol (gpt-6-sol refuses to *write* scam variants; extend the templates in `doubletake/redteam.py`), or try Jev without the household context.
+3. **Jev is non-deterministic.** Re-running `precompute --refresh` can change which heroes Jev pays. The stage picks the hero dynamically, so it adapts.
+4. **τ = 0.20** was not tuned on held-out data. Real bills sat at brittleness 0.07-0.16 in this run. A threshold sweep in `run_eval.py` would be a good next card.
+5. Rotate the API keys that were shared in chat when the project is done.

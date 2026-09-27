@@ -212,15 +212,15 @@
   {
     "id": 15,
     "title": "E2E verification + README polish",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 2,
     "rank": 15,
     "description": "Full walkthrough in browser, fix bugs, README with setup/run/demo script, update HANDOFF.",
     "done_when": "Fresh clone -> README steps -> working demo.",
-    "implementation_notes": null,
+    "implementation_notes": "Fresh clone verified (no secrets, 88 tests, offline replay of stage/eval/gate without keys); README rewritten with results, quick start, map, re-run and Failproof sections; ARCHITECTURE updated; third-party warning filtered.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:22:43",
+    "completed_at": "2026-09-27 07:22:43"
   }
 ]

@@ -6,7 +6,6 @@ run `python scripts/board.py import` to recreate it.
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
 | 7 | todo | L3 | Cross-examination engine + 3 modes | Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only. |
-| 15 | todo | L2 | E2E verification + README polish | Fresh clone -> README steps -> working demo. |
 | 1 | done | L1 | Repo scaffold + handoff system | Repo pushed to main; `pip install -e .[dev]` + `pytest` runs green (0 tests ok); no secrets committed. |
 | 2 | done | L2 | Jev (TypeSafe) client with cost + latency tracking | Unit tests with respx mocks pass; one live smoke call script prints answers. |
 | 3 | done | L2 | Second-opinion LLM client (gpt-6-sol) | Mocked unit tests pass; live smoke works. |
@@ -21,3 +20,4 @@ run `python scripts/board.py import` to recreate it.
 | 12 | done | L2 | Eval UI page | Matches mockup, real numbers. |
 | 13 | done | L3 | Failproof gate policy + Codex agent demo | Gate returns ALLOW for G01-G04, DENY for S01/S07; log persisted. |
 | 14 | done | L2 | Failproof log + Ledger tabs live in UI | Button run shows log lines live. |
+| 15 | done | L2 | E2E verification + README polish | Fresh clone -> README steps -> working demo. |

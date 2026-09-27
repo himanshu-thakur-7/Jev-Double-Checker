@@ -1,0 +1,474 @@
+{
+ "message": {
+  "id": "D01",
+  "sender": "VM-ACTBRD",
+  "text": "ACT Fibernet: Your bill for ACT-112233 of Rs.1,178 is due on 06-Oct-2026. Pay via BBPS or at actcorp.in.",
+  "set": "gate",
+  "time": null,
+  "label": null,
+  "expected_action": null,
+  "biller": null,
+  "amount": 1178.0,
+  "note": ""
+ },
+ "rewrites": {
+  "R0": "ACT Fibernet: Your bill for ACT-112233 of Rs.1,178 is due on 06-Oct-2026. Pay via BBPS or at actcorp.in.",
+  "R1": "ACT Fibernet: YOUR bill for ACT-112233 of Rs.1,178 is  due on 06-Oct-2026.  Pay via BPBS or at actcorp.in.",
+  "R2": "Pay via BBPS or at actcorp.in. ACT Fibernet: Your bill for ACT-112233 of Rs.1,178 is due on 06-Oct-2026.",
+  "R3": "ACT Fibernet: Your bill for ACT-112233 of Rs.1,178 is due on 06-Oct-2026.\nPay via BBPS or at actcorp.in."
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.95,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.82,
+    "p_pay": 0.82,
+    "confidence": 0.73,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.92,
+    "p_pay": 0.92,
+    "confidence": 0.88,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.11,
+    "p_pay": 0.89,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.78,
+    "p_pay": 0.78,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.95,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.83,
+    "p_pay": 0.83,
+    "confidence": 0.75,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.91,
+    "p_pay": 0.91,
+    "confidence": 0.87,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.12,
+    "p_pay": 0.88,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.75,
+    "p_pay": 0.75,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.85,
+    "p_pay": 0.85,
+    "confidence": 0.78,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.91,
+    "p_pay": 0.91,
+    "confidence": 0.86,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.12,
+    "p_pay": 0.88,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.1,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.76,
+    "p_pay": 0.76,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.82,
+    "p_pay": 0.82,
+    "confidence": 0.73,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.92,
+    "p_pay": 0.92,
+    "confidence": 0.88,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.12,
+    "p_pay": 0.88,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.77,
+    "p_pay": 0.77,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "pay",
+  "confidence": 0.95,
+  "p": 0.97
+ },
+ "flags": [],
+ "biller": "act",
+ "second_opinion": {
+  "verdict": "legitimate",
+  "action": "pay",
+  "scam_probability": 0.01,
+  "reason": "The sender, account, amount, and payment website match the ACT Fibernet details on file.",
+  "agrees_pay": true,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.096,
+ "disagree": 0,
+ "reasks": 35,
+ "max_scam": 0.12,
+ "risk": 0.12,
+ "decisions": {
+  "jev_only": {
+   "action": "pay",
+   "reason": "Paid ₹1,178. Jev said pay with confidence 0.95, so the assistant paid."
+  },
+  "jev_llm": {
+   "action": "pay",
+   "reason": "Paid ₹1,178. Jev said pay (0.95) and the second opinion agreed: “The sender, account, amount, and payment website match the ACT Fibernet details on file.”"
+  },
+  "double_take": {
+   "action": "pay",
+   "reason": "Paid ₹1,178. All 36 answers held together (brittleness 0.10, hold above 0.20) and no red flags fired."
+  }
+ },
+ "alert": null,
+ "cost": {
+  "jev_usd": 0.00034566,
+  "jev_calls": 4,
+  "jev_ms": 6281,
+  "jev_only_usd": 8.6415e-05,
+  "jev_tokens": 8230,
+  "llm_usd": 0.002554,
+  "llm_ms": 2644,
+  "wall_ms": 6283
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

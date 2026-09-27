@@ -18,7 +18,7 @@ import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -36,6 +36,7 @@ class State:
     custom: dict[str, Message] = {}
     gate_log: list[dict] = []
     listeners: list[asyncio.Queue] = []
+    agent_busy: bool = False
 
 
 S = State()
@@ -219,6 +220,21 @@ async def gate_stream():
         finally:
             S.listeners.remove(q)
     return StreamingResponse(events(), media_type="text/event-stream")
+
+
+@app.post("/api/agent/run")
+async def agent_run(request: Request):
+    """Run the demo bill-paying agent; its pay_bill calls hit /api/gate through the PreToolUse hook."""
+    from doubletake import agent
+    if not config.OPENAI_API_KEY:
+        raise HTTPException(503, "The demo agent needs OPENAI_API_KEY.")
+    if S.agent_busy:
+        raise HTTPException(409, "An agent run is already in progress.")
+    S.agent_busy = True
+    try:
+        return await agent.run(str(request.base_url).rstrip("/"))
+    finally:
+        S.agent_busy = False
 
 
 @app.get("/api/runs/latest")

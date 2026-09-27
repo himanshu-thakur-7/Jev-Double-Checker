@@ -184,16 +184,16 @@
   {
     "id": 13,
     "title": "Failproof gate policy + Codex agent demo",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 3,
     "rank": 13,
     "description": "failproof/: custom policy double-take-gate on PreToolUse matching pay_bill tool, POSTs /api/gate, deny with reason 'Held for Rahul... Do not retry'. demo/pay_bills agent (MCP pay_bill tool) + script to run Codex under it; fallback simulated runner if codex/failproofai missing.",
     "done_when": "Gate returns ALLOW for G01-G04, DENY for S01/S07; log persisted.",
-    "implementation_notes": null,
+    "implementation_notes": "Failproof policy .failproofai/policies/double-take-gate.mjs; command hook failproof/double_take_gate.py (Codex/Claude Code, fails closed); doubletake/gatehook.py; demo/ (inbox, pay_bill.py fake rail, AGENTS.md, README with Codex config); doubletake/agent.py runner (codex exec if installed, else gpt-6-luna loop gated by the same hook); POST /api/agent/run. Live: 6 paid, S01/S07 denied, no retry.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:17:30",
+    "completed_at": "2026-09-27 07:17:30"
   },
   {
     "id": 14,

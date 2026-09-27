@@ -173,3 +173,19 @@ Architecture: `docs/ARCHITECTURE.md`.
   Key numbers: 15 scams Jev alone pays, 0 for DT without the LLM, 7.8× cheaper than Jev+LLM. Error list with "caught at k%" or "missed".
 - **Verified in the browser:** renders run eval-1790492806 with no console errors. The empty shared-confident view shows an honest "nothing to catch" note. pytest 83/83.
 - **Next:** card #13, the Failproof gate policy and Codex agent demo (`failproof/`, `demo/`, `POST /api/agent/run`).
+
+### 2026-09-27 12:47 IST: Run 13 (card #13, Failproof gate + Codex demo)
+- **Done:**
+  - `.failproofai/policies/double-take-gate.mjs`: a Failproof AI custom policy (`customPolicies.add`, PreToolUse). It catches `pay_bill` tool calls *or* Bash commands running
+    pay_bill, POSTs `/api/gate`, and returns `allow()`/`deny(reason)`. It fails closed. `DOUBLE_TAKE_URL` overrides localhost:8765.
+  - `failproof/double_take_gate.py`: the same gate as a plain **PreToolUse command hook** for Codex or Claude Code (stdin event → `hookSpecificOutput.permissionDecision`).
+    Logic lives in `doubletake/gatehook.py` (parses Bash args or direct tool input; fails closed).
+  - `demo/`: `inbox.json` (G01-G05, S01, S07, D01 ACT with inline text), `pay_bill.py` (fake rail → demo/ledger.jsonl, gitignored), `AGENTS.md` (agent brief),
+    and `README.md` (stage button / Codex config.toml hook snippet / Failproof install).
+  - `doubletake/agent.py` + `POST /api/agent/run`: uses `codex exec` if the Codex CLI is on PATH, **otherwise a built-in gpt-6-luna agent loop** whose every pay_bill call
+    runs the *same hook script* as a subprocess and honours deny. The runner name is returned and shown in the UI (honest about which ran).
+- **Verified:** pytest 87/87 (hook parsing, deny shape, fail-closed). The hook over stdin gave deny for S01, allow for G01 and allow for `git status`.
+  **Full live agent run (25 s):** paid G01-G05 + D01 (₹16,332), and the gate denied S01 and S07. The agent didn't retry and its final message matches the mockup.
+  The stage's Failproof log tab shows all 8 lines (browser-verified).
+- **Not done / needs the owner:** Codex CLI and failproofai are **not installed** on this machine. I didn't install global tools without asking. Wiring is documented in demo/README.md.
+- **Next:** card #14, live Failproof log + Ledger in the UI. SSE and the Ledger tab already exist; what's left is verifying the button run streams live and polishing.

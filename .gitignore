@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.claude/kanban.json
+.codex/kanban.json
+.claude/kanban-context.md
+.DS_Store
+node_modules/
+*.egg-info/

@@ -1,0 +1,22 @@
+[project]
+name = "doubletake"
+version = "0.1.0"
+description = "Double Take: cross-examine Jev before any money moves"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "python-dotenv>=1.0",
+  "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "respx>=0.21"]
+
+[tool.setuptools.packages.find]
+include = ["doubletake*", "server*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

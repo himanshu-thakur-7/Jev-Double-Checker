@@ -30,16 +30,16 @@
   {
     "id": 3,
     "title": "Second-opinion LLM client (gpt-6-sol)",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 3,
     "description": "doubletake/llm.py: OpenAI Responses/Chat with JSON schema output {verdict: legitimate|scam, action: pay|hold|ignore, reason}, cost + latency. Model configurable via SECOND_OPINION_MODEL.",
     "done_when": "Mocked unit tests pass; live smoke works.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/llm.py: Responses API strict json_schema, verdict/action/scam_probability/reason, cost $2/$10 per M; 4 tests; live smoke OK",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:22:07",
+    "completed_at": "2026-09-27 06:22:07"
   },
   {
     "id": 4,

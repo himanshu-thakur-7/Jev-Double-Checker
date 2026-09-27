@@ -18,3 +18,6 @@ JEV_PRICE_OUT_PER_M = float(os.getenv("JEV_PRICE_OUT_PER_M", "0"))
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1")
 SECOND_OPINION_MODEL = os.getenv("SECOND_OPINION_MODEL", "gpt-6-sol")
+# gpt-6-sol standard rates, USD per million tokens.
+LLM_PRICE_IN_PER_M = float(os.getenv("LLM_PRICE_IN_PER_M", "2.0"))
+LLM_PRICE_OUT_PER_M = float(os.getenv("LLM_PRICE_OUT_PER_M", "10.0"))

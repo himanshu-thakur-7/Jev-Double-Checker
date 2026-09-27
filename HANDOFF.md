@@ -52,3 +52,13 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Verified:** `pytest` 4/4 (respx mocks). Live `scripts/smoke_jev.py` on the hero scam returned hold 0.55, scam 0.93, 1.8 s, $0.000018.
 - **Note:** Jev's answers on the same text vary between calls/wordings (hold 0.79 earlier vs 0.55 now). That variance is exactly the brittleness signal.
 - **Next:** card #3, the second-opinion LLM client (`doubletake/llm.py`, gpt-6-sol).
+
+### 2026-09-27 11:52 IST: Run 2 (card #3, second-opinion LLM)
+- **Done:** `doubletake/llm.py`. `LLMClient.review(sender, text, context)` calls the OpenAI **Responses API** with a strict json_schema
+  → `SecondOpinion{verdict: legitimate|scam|not_a_bill, action: pay|hold|ignore, scam_probability, reason, cost_usd, latency_ms}`.
+  `agrees_pay` is used by "Jev + LLM" mode. The message is marked untrusted in the prompt. Prices are $2/M in and $10/M out (gpt-6-sol standard), set in config.
+- **Verified:** pytest 8/8. Live `scripts/smoke_llm.py`: hero S01 gave **scam, 0.98**, 3.4 s, $0.0016.
+- **Important finding:** the mockup's story says the second opinion *agrees to pay* on S01. The real gpt-6-sol catches it. The UI must
+  render real results, not the mockup copy. The eval (card #11) is where "shared confident errors" get measured honestly, and the
+  red-team rewrites (rt-*) are designed to fool both models.
+- **Next:** card #4, the message dataset (`data/messages/*.jsonl`, `data/billers.json`, loader).

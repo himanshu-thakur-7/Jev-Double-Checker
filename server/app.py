@@ -262,10 +262,10 @@ async def agent_run(request: Request):
         result["gate_log"] = [e for e in S.gate_log if e.get("epoch", 0) >= started]
         result["inbox"] = json.loads((config.ROOT / "demo" / "inbox.json").read_text())["bills"]
         result["run_id"] = f"agent-run-{int(started)}"
-        (config.DATA / "runs" / f"{result['run_id']}.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
         if request.query_params.get("evaluate") == "1":
             from eval.agent_eval import evaluate_run
             result["evaluation"] = await evaluate_run(result)
+        (config.DATA / "runs" / f"{result['run_id']}.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
         return result
     finally:
         S.agent_busy = False

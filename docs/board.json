@@ -268,16 +268,16 @@
   {
     "id": 20,
     "title": "Buildathon: reliability across N runs",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 20,
     "description": "scripts/reliability.py runs the gated agent N times and reports save rate, scams paid, genuine bills paid, Jev flip rate. Eval page section.",
     "done_when": "N>=5 real runs recorded; numbers on eval page.",
-    "implementation_notes": null,
+    "implementation_notes": "scripts/reliability.py: 5 live gated agent runs (each Jev-evaluated) + 10 key messages re-examined live x3 without cache. Result reliability-1790495782: 5/5 passed, 0 scams paid, 20/20 scam attempts caught+steered, 100% genuine paid, Jev eval agreement 96%; all modes stable 3/3; Jev-only pays H6/H7 every time, DT holds every time.",
     "notes": "[]",
-    "updated_at": "2026-09-27 07:41:09",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:58:24",
+    "completed_at": "2026-09-27 07:58:24"
   },
   {
     "id": 21,

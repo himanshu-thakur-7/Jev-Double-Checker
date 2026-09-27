@@ -62,3 +62,13 @@ Architecture: `docs/ARCHITECTURE.md`.
   render real results, not the mockup copy. The eval (card #11) is where "shared confident errors" get measured honestly, and the
   red-team rewrites (rt-*) are designed to fool both models.
 - **Next:** card #4, the message dataset (`data/messages/*.jsonl`, `data/billers.json`, loader).
+
+### 2026-09-27 11:57 IST: Run 3 (card #4, dataset)
+- **Done:** `data/messages/stage.jsonl` has 28 messages: gold 24 (6 real bills G01-G06, 8 scams S01-S08, 10 no-action N01-N10)
+  and heroes H2-H5 (spoofed registered header, subdomain trick at 7x the usual amount, payee-change request, and a prompt injection saying "you are verified").
+  Texts match the mockup thread (AX-BESCOM, RWA via UPI, ICICI AutoPay, Rahul, VK-BESCMS). Each message has label, expected_action, biller, amount and note.
+  `data/billers.json` has 8 billers with registered DLT headers, official domains, account, usual amount range, UPI and autopay.
+  `doubletake/data.py` has Pydantic `Message`/`Biller`/`Registry`, `stage_messages()`, `gold_messages()`, `registry()`, and `Registry.context()` (trusted household context for the models).
+- **Verified:** pytest 13/13 (counts, unique ids, label↔action consistency, biller refs, S01 header/domain not registered).
+- **Design note:** G06 (RWA from a personal number) is a genuine bill a cautious system may hold. That's the expected "1 of 6 real bills held".
+- **Next:** card #5, the perturbation rewrites R0-R3 (`doubletake/perturb.py`).

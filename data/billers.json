@@ -1,0 +1,29 @@
+{
+  "household": {
+    "owner": "Ramesh (Appa)",
+    "reviewer": "Rahul",
+    "city": "Bengaluru",
+    "family_contacts": {"Rahul": "+91 98860 5XXXX"}
+  },
+  "billers": [
+    {"id": "bescom", "name": "BESCOM", "category": "electricity", "account": "1234567890",
+     "headers": ["AX-BESCOM", "VM-BESCOM", "JD-BESCOM"], "domains": ["bescom.co.in", "bescom.karnataka.gov.in", "bbps.org.in"],
+     "usual_amount": [900, 1600], "pay_via": "BBPS"},
+    {"id": "bwssb", "name": "BWSSB", "category": "water", "account": "RR-4471-2209",
+     "headers": ["AX-BWSSBB", "VM-BWSSBB"], "domains": ["bwssb.karnataka.gov.in"], "usual_amount": [250, 600], "pay_via": "BBPS"},
+    {"id": "airtel", "name": "Airtel", "category": "mobile", "account": "9845012345",
+     "headers": ["AD-AIRTEL", "VM-AIRTEL", "AX-AIRTEL"], "domains": ["airtel.in"], "usual_amount": [599, 699], "pay_via": "BBPS"},
+    {"id": "lic", "name": "LIC", "category": "insurance", "account": "Policy 712345678",
+     "headers": ["AX-LICIND", "VM-LICIND"], "domains": ["licindia.in"], "usual_amount": [12480, 12480], "pay_via": "BBPS"},
+    {"id": "tataplay", "name": "Tata Play", "category": "dth", "account": "1087654321",
+     "headers": ["VM-TPLAY", "AX-TPLAY"], "domains": ["tataplay.com"], "usual_amount": [350, 450], "pay_via": "BBPS"},
+    {"id": "act", "name": "ACT Fibernet", "category": "broadband", "account": "ACT-112233",
+     "headers": ["VM-ACTBRD", "AX-ACTBRD"], "domains": ["actcorp.in"], "usual_amount": [1100, 1250], "pay_via": "BBPS"},
+    {"id": "rwa", "name": "Jayanagar 4th Block RWA", "category": "maintenance", "account": "Flat 12B",
+     "headers": [], "phones": ["+91 98450 1XXXX"], "upi": ["jayanagar4rwa@okaxis"], "domains": [],
+     "usual_amount": [2500, 2500], "pay_via": "UPI"},
+    {"id": "icici_cc", "name": "ICICI Bank Credit Card", "category": "credit_card", "account": "XX9002",
+     "headers": ["VM-ICICIB", "AX-ICICIB", "JM-ICICIT"], "domains": ["icicibank.com"], "usual_amount": [2000, 15000],
+     "pay_via": "AutoPay", "autopay": true}
+  ]
+}

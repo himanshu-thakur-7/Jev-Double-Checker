@@ -44,16 +44,16 @@
   {
     "id": 4,
     "title": "Message dataset: gold 24 + hero 4 + biller registry",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 4,
     "description": "data/messages/gold.jsonl: 8 scams, 6 real bills, 10 no-action (ids G01.., S01.., N..), hero candidates H1-H5 (spoofed header, 'you are verified' injection). data/billers.json: registered DLT senders, official domains, accounts on file, usual amounts. Matches mockup texts (AX-BESCOM, VK-BESCMS, RWA UPI, ICICI, Rahul).",
     "done_when": "Loader + schema validation test passes; 28 messages for stage.",
-    "implementation_notes": null,
+    "implementation_notes": "data/messages/stage.jsonl (28: gold 6 bills/8 scams/10 none + heroes H2-H5), data/billers.json (8 billers), doubletake/data.py typed loaders + context(); 5 tests",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:27:47",
+    "completed_at": "2026-09-27 06:27:47"
   },
   {
     "id": 5,

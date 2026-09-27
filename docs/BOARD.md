@@ -5,7 +5,6 @@ run `python scripts/board.py import` to recreate it.
 
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
-| 4 | todo | L2 | Message dataset: gold 24 + hero 4 + biller registry | Loader + schema validation test passes; 28 messages for stage. |
 | 5 | todo | L2 | Perturbation rewrites R0-R3 | Tests: deterministic, preserves URLs/amounts/account ids. |
 | 6 | todo | L2 | Deterministic risk signals (flags) | Tests on hero S01 produce the 3 mockup flags. |
 | 7 | todo | L3 | Cross-examination engine + 3 modes | Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only. |
@@ -20,3 +19,4 @@ run `python scripts/board.py import` to recreate it.
 | 1 | done | L1 | Repo scaffold + handoff system | Repo pushed to main; `pip install -e .[dev]` + `pytest` runs green (0 tests ok); no secrets committed. |
 | 2 | done | L2 | Jev (TypeSafe) client with cost + latency tracking | Unit tests with respx mocks pass; one live smoke call script prints answers. |
 | 3 | done | L2 | Second-opinion LLM client (gpt-6-sol) | Mocked unit tests pass; live smoke works. |
+| 4 | done | L2 | Message dataset: gold 24 + hero 4 + biller registry | Loader + schema validation test passes; 28 messages for stage. |

@@ -180,6 +180,10 @@ async def gate(req: GateRequest):
     else:
         why = dt["reason"].removeprefix("Held. ")
         decision, reason = "deny", f"{why} Held for Rahul to review. Do not retry."
+    if decision == "deny" and dt["action"] != "ignore":
+        short = (ex["flags"][0]["label"] if ex.get("flags") else f"Double Take held it (brittleness {ex['brittleness']:.2f})")
+        instead = f'python3 ask_rahul.py --bill {m.id} --reason "{short.replace(chr(34), "")}"'
+        reason += f" Instead, run: {instead}"
     entry = {"ts": time.strftime("%H:%M:%S"), "epoch": time.time(), "tool": req.tool_name, "bill_id": m.id,
              "payee": payee, "amount": amount if amount is not None else m.amount, "decision": decision,
              "reason": reason, "agent": req.agent}
@@ -189,6 +193,24 @@ async def gate(req: GateRequest):
     for q in list(S.listeners):
         q.put_nowait(entry)
     return {"decision": decision, "reason": reason, "bill_id": m.id}
+
+
+class Escalation(BaseModel):
+    bill_id: str = Field(min_length=1, max_length=40)
+    reason: str = Field(min_length=1, max_length=300)
+
+
+@app.post("/api/escalate")
+def escalate(body: Escalation):
+    """The agent followed a verdict and asked Rahul instead of paying: the save, completed."""
+    entry = {"ts": time.strftime("%H:%M:%S"), "epoch": time.time(), "tool": "ask_rahul", "bill_id": body.bill_id,
+             "payee": "", "amount": None, "decision": "steered", "reason": f"Asked Rahul: {body.reason}", "agent": None}
+    S.gate_log.append(entry)
+    with GATE_LOG.open("a") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    for q in list(S.listeners):
+        q.put_nowait(entry)
+    return {"ok": True}
 
 
 @app.get("/api/gate/log")

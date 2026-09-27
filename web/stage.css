@@ -88,7 +88,7 @@ div.field{color:var(--mist)}
 .a1{background:var(--kumkum);color:#fff!important}.a2{border:1px solid #c9d1cf!important;background:#fff}
 .log{font-family:"DejaVu Sans Mono",ui-monospace,Menlo,monospace;font-size:12.5px;background:#0f1d23;border:1px solid var(--line);border-radius:14px;padding:14px 16px;line-height:1.7}
 .log .l{display:grid;grid-template-columns:64px 215px 58px 1fr;gap:10px;align-items:start;padding:6px 0;border-bottom:1px dashed #24404a}
-.log .t{color:var(--mist)}.ok{color:#8fe0b6;font-weight:700}.no{color:#ff9d8a;font-weight:700}
+.log .t{color:var(--mist)}.steer{color:#ffd27a;font-weight:700}.ok{color:#8fe0b6;font-weight:700}.no{color:#ff9d8a;font-weight:700}
 .agent{margin-top:16px;background:var(--dusk2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.55;white-space:pre-wrap}
 .agent small{color:var(--mist);display:block;margin-bottom:6px;font-size:12px}
 table.led{width:100%;border-collapse:collapse;font-size:13px}

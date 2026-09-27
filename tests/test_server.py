@@ -37,11 +37,14 @@ def test_gate_allows_real_bill_and_denies_scam(client):
     ok = client.post("/api/gate", json={"tool_name": "pay_bill", "tool_input": {"bill_id": "G01", "amount": 1240}}).json()
     assert ok["decision"] == "allow"
     no = client.post("/api/gate", json={"tool_input": {"bill_id": "S01", "amount": 1240}}).json()
-    assert no["decision"] == "deny" and no["reason"].endswith("Do not retry.")
+    assert no["decision"] == "deny" and "Do not retry." in no["reason"]
+    assert "Instead, run: python3 ask_rahul.py --bill S01" in no["reason"]
     wrong_amt = client.post("/api/gate", json={"tool_input": {"bill_id": "G01", "amount": 9999}}).json()
     assert wrong_amt["decision"] == "deny" and "differs" in wrong_amt["reason"]
     log = client.get("/api/gate/log").json()["entries"]
     assert [e["decision"] for e in log] == ["allow", "deny", "deny"]
+    client.post("/api/escalate", json={"bill_id": "S01", "reason": "Lookalike link"})
+    assert client.get("/api/gate/log").json()["entries"][-1]["decision"] == "steered"
 
 
 def test_gate_requires_reference(client):

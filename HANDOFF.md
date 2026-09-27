@@ -212,3 +212,17 @@ Architecture: `docs/ARCHITECTURE.md`.
 3. **Jev is non-deterministic.** Re-running `precompute --refresh` can change which heroes Jev pays. The stage picks the hero dynamically, so it adapts.
 4. **τ = 0.20** was not tuned on held-out data. Real bills sat at brittleness 0.07-0.16 in this run. A threshold sweep in `run_eval.py` would be a good next card.
 5. Rotate the API keys that were shared in chat when the project is done.
+
+## Buildathon phase (Jev buildathon × lossfunk, Sun 27 Sep 2026, 3:00-6:30 pm IST, demos 5:15)
+Judging: **stakes**, **reliability across runs**, and **the save** (a Jev verdict visibly changes what the agent does). Failproof runs Jev policies on
+live tool calls. New cards #17-#22 (see docs/BOARD.md).
+
+### 2026-09-27 13:17 IST: Run 16 (card #18, the save = deny + steer)
+- **Done:** `demo/ask_rahul.py` (hold and ask Rahul; POSTs `/api/escalate`, which logs a **steered** entry). Every gate deny now ends with
+  `Instead, run: python3 ask_rahul.py --bill <id> --reason "<top flag>"`, so the Failproof policy's deny message steers the agent to the right action.
+  The built-in runner has an `ask_rahul` tool, AGENTS.md tells the agent to follow the gate's instruction, and the stage log shows STEERED in amber.
+  The demo inbox now includes **H6 and H7**, which Jev-only would *pay*, so the save is one only Double Take makes.
+- **Verified:** pytest 88/88. Live agent run: 6 genuine bills paid; S01 and S07 **denied → agent ran ask_rahul** (log: deny then steered for each).
+- **Codex + Failproof:** failproofai 1.0.8 and codex-cli 0.157.1 are installed (npm -g). Codex is logged in via ChatGPT. `failproofai config` (a root service
+  plus hooks into *every* agent CLI) and `failproofai jev setup` (stores the TypeSafe key) are **left to the owner**. The runner uses Codex only when
+  `DEMO_CODEX=failproof` is set, so it never runs ungated. Injecting a hook with `--dangerously-bypass-hook-trust` was refused by the safety classifier and is not used.

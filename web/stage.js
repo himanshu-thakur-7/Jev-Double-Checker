@@ -168,7 +168,7 @@ function alertHtml(a) {
 
 function renderLog() {
   const rows = st.gate.map((e) => `<div class="l"><span class="t">${esc(e.ts)}</span><span>${esc(e.tool)} ${esc(e.bill_id)} ${esc(e.payee || "")} ${e.amount ? rs(e.amount) : ""}</span>
-    <span class="${e.decision === "allow" ? "ok" : "no"}">${e.decision.toUpperCase()}</span><span>${esc(e.reason)}</span></div>`).join("");
+    <span class="${e.decision === "allow" ? "ok" : e.decision === "steered" ? "steer" : "no"}">${e.decision === "steered" ? "STEERED" : e.decision.toUpperCase()}</span><span>${esc(e.reason)}</span></div>`).join("");
   const ag = st.agent;
   return `<div class="cx"><h2>Live run: Codex agent under Failproof</h2><div class="sub">Policy double-take-gate on PreToolUse. Every pay_bill call asks POST /api/gate first.</div></div>
     <div class="log">${rows || `<div class="note">No gate decisions yet. Press “Run Codex under Failproof”.</div>`}</div>

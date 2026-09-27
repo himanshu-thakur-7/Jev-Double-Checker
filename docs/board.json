@@ -114,16 +114,16 @@
   {
     "id": 8,
     "title": "Precompute cache + replay",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 2,
     "rank": 8,
     "description": "doubletake/cache.py + scripts/precompute.py: run engine on 28 stage messages, write data/cache/*.json keyed by content hash + model version, used by server for instant replay.",
     "done_when": "data/cache populated & committed; server replays without network.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/cache.py content-addressed (sender,text,models,questions,household); scripts/precompute.py; data/cache has 30 live examinations; 2 tests",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:46:11",
+    "completed_at": "2026-09-27 06:46:11"
   },
   {
     "id": 9,

@@ -1,0 +1,495 @@
+{
+ "message": {
+  "id": "H2",
+  "sender": "AX-BESCOM",
+  "text": "BESCOM ALERT: Acct ID 1234567890 Sep-2026 payment of Rs.1,240.00 failed at BBPS. Supply will be disconnected tonight. Complete payment within 2 hours at bescom-online-pay.in to avoid reconnection charges.",
+  "set": "hero",
+  "time": "6:20 PM",
+  "label": "scam",
+  "expected_action": "hold",
+  "biller": "bescom",
+  "amount": 1240.0,
+  "note": "Spoofed registered header; only the link gives it away."
+ },
+ "rewrites": {
+  "R0": "BESCOM ALERT: Acct ID 1234567890 Sep-2026 payment of Rs.1,240.00 failed at BBPS. Supply will be disconnected tonight. Complete payment within 2 hours at bescom-online-pay.in to avoid reconnection charges.",
+  "R1": "BESCOM ALERT: Acct ID 1234567890 Sep-2026 paymnet of Rs.1,240.00 failed at BBPS. Supply will be disconnecetd tonight. Complete payment  within 2 HOURS at bescom-online-pay.in  to avoid reocnnection charegs.",
+  "R2": "Complete payment within 2 hours at bescom-online-pay.in to avoid reconnection charges. Supply will be disconnected tonight. BESCOM ALERT: Acct ID 1234567890 Sep-2026 payment of Rs.1,240.00 failed at BBPS.",
+  "R3": "BESCOM Alert: Acct ID 1234567890 Sep-2026 payment of Rs.1,240.00 failed at BBPS.\nSupply will be disconnected tonight.\nComplete payment within 2 hours at bescom-online-pay.in to avoid reconnection charges."
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.92,
+    "p_pay": 0.07,
+    "confidence": 0.88,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.94,
+    "p_pay": 0.03,
+    "confidence": 0.92,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.81,
+    "p_pay": 0.18,
+    "confidence": 0.71,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.9,
+    "p_pay": 0.09,
+    "confidence": 0.84,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.97,
+    "p_pay": 0.02,
+    "confidence": 0.95,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.88,
+    "p_pay": 0.12,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.84,
+    "p_pay": 0.16000000000000003,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.14,
+    "p_pay": 0.14,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.25,
+    "p_pay": 0.25,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.97,
+    "p_pay": 0.02,
+    "confidence": 0.95,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.95,
+    "p_pay": 0.01,
+    "confidence": 0.93,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.89,
+    "p_pay": 0.09,
+    "confidence": 0.84,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.94,
+    "p_pay": 0.04,
+    "confidence": 0.91,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.97,
+    "p_pay": 0.01,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.93,
+    "p_pay": 0.06999999999999995,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.89,
+    "p_pay": 0.10999999999999999,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.11,
+    "p_pay": 0.11,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.19,
+    "p_pay": 0.19,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.9,
+    "p_pay": 0.09,
+    "confidence": 0.85,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.96,
+    "p_pay": 0.02,
+    "confidence": 0.94,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.79,
+    "p_pay": 0.2,
+    "confidence": 0.68,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.86,
+    "p_pay": 0.13,
+    "confidence": 0.8,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.96,
+    "p_pay": 0.03,
+    "confidence": 0.94,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.87,
+    "p_pay": 0.13,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.85,
+    "p_pay": 0.15000000000000002,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.14,
+    "p_pay": 0.14,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.22,
+    "p_pay": 0.22,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.95,
+    "p_pay": 0.04,
+    "confidence": 0.92,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.95,
+    "p_pay": 0.02,
+    "confidence": 0.94,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.88,
+    "p_pay": 0.11,
+    "confidence": 0.81,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.91,
+    "p_pay": 0.08,
+    "confidence": 0.87,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.97,
+    "p_pay": 0.02,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.89,
+    "p_pay": 0.10999999999999999,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.88,
+    "p_pay": 0.12,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.12,
+    "p_pay": 0.12,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.22,
+    "p_pay": 0.22,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "hold",
+  "confidence": 0.88,
+  "p": 0.92
+ },
+ "flags": [
+  {
+   "kind": "threat",
+   "label": "Threat within hours: “disconnected tonight”",
+   "severity": "soft",
+   "evidence": "disconnected tonight"
+  },
+  {
+   "kind": "lookalike_link",
+   "label": "Unknown link: bescom-online-pay.in",
+   "severity": "hard",
+   "evidence": "uses the BESCOM name but is not an official BESCOM website"
+  }
+ ],
+ "biller": "bescom",
+ "second_opinion": {
+  "verdict": "scam",
+  "action": "ignore",
+  "scam_probability": 0.99,
+  "reason": "Despite the familiar sender and account, the urgent payment link is not an official BESCOM website.",
+  "agrees_pay": false,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.897,
+ "disagree": 35,
+ "reasks": 35,
+ "max_scam": 0.93,
+ "risk": 1.02,
+ "decisions": {
+  "jev_only": {
+   "action": "hold",
+   "reason": "Jev said hold with confidence 0.88."
+  },
+  "jev_llm": {
+   "action": "hold",
+   "reason": "Jev said hold with confidence 0.88."
+  },
+  "double_take": {
+   "action": "hold",
+   "reason": "Held. Jev's base answer was hold (0.88). 35 of 35 re-asks disagreed with paying."
+  }
+ },
+ "alert": {
+  "title": "Held for Rahul",
+  "who": "Appa’s Assistant paused a payment, 6:20 PM",
+  "why": "This looks like BESCOM but came from a different website. The answers disagreed on 35 of 35 re-asks.",
+  "actions": [
+   "Block and report",
+   "It’s genuine, pay"
+  ]
+ },
+ "cost": {
+  "jev_usd": 0.000349398,
+  "jev_calls": 4,
+  "jev_ms": 1527,
+  "jev_only_usd": 8.73495e-05,
+  "jev_tokens": 8319,
+  "llm_usd": 0.002644,
+  "llm_ms": 3275,
+  "wall_ms": 3281
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

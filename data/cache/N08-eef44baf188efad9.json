@@ -1,0 +1,481 @@
+{
+ "message": {
+  "id": "N08",
+  "sender": "AX-AMAZON",
+  "text": "Delivered: Your package with Philips BP monitor was delivered. Rate your experience.",
+  "set": "gold",
+  "time": "3:40 PM",
+  "label": "none",
+  "expected_action": "ignore",
+  "biller": null,
+  "amount": null,
+  "note": "Delivery notification."
+ },
+ "rewrites": {
+  "R0": "Delivered: Your package with Philips BP monitor was delivered. Rate your experience.",
+  "R1": "Delivered: Yur pckage with Philips BP monitor was delivered. rate your EXPERIENCE.",
+  "R2": "Rate your experience. Delivered: Your package with Philips BP monitor was delivered.",
+  "R3": "Delivered: Your package with Philips BP monitor was delivered.\nRate your experience."
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.41,
+    "p_pay": 0.5900000000000001,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.13,
+    "p_pay": 0.87,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.24,
+    "p_pay": 0.24,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.97,
+    "p_pay": 0.0,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.98,
+    "p_pay": 0.0,
+    "confidence": 0.97,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.98,
+    "p_pay": 0.0,
+    "confidence": 0.97,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.95,
+    "p_pay": 0.0,
+    "confidence": 0.93,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.57,
+    "p_pay": 0.43000000000000005,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.21,
+    "p_pay": 0.79,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.2,
+    "p_pay": 0.2,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.36,
+    "p_pay": 0.64,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.14,
+    "p_pay": 0.86,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.03,
+    "p_pay": 0.03,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.31,
+    "p_pay": 0.31,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.98,
+    "p_pay": 0.0,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.43,
+    "p_pay": 0.5700000000000001,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.14,
+    "p_pay": 0.86,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.03,
+    "p_pay": 0.03,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.22,
+    "p_pay": 0.22,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "ignore",
+  "confidence": 0.99,
+  "p": 0.99
+ },
+ "flags": [
+  {
+   "kind": "unregistered_sender",
+   "label": "Unregistered sender: AX-AMAZON",
+   "severity": "soft",
+   "evidence": "not a registered sender for any biller on file"
+  }
+ ],
+ "biller": null,
+ "second_opinion": {
+  "verdict": "not_a_bill",
+  "action": "ignore",
+  "scam_probability": 0.02,
+  "reason": "This is a package delivery notification with no payment request.",
+  "agrees_pay": false,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.809,
+ "disagree": 28,
+ "reasks": 35,
+ "max_scam": 0.57,
+ "risk": 0.829,
+ "decisions": {
+  "jev_only": {
+   "action": "ignore",
+   "reason": "Jev said ignore with confidence 0.99."
+  },
+  "jev_llm": {
+   "action": "ignore",
+   "reason": "Jev said ignore with confidence 0.99."
+  },
+  "double_take": {
+   "action": "ignore",
+   "reason": "No action. Jev's base answer was ignore (0.99)."
+  }
+ },
+ "alert": null,
+ "cost": {
+  "jev_usd": 0.000340368,
+  "jev_calls": 4,
+  "jev_ms": 1362,
+  "jev_only_usd": 8.5092e-05,
+  "jev_tokens": 8104,
+  "llm_usd": 0.002156,
+  "llm_ms": 2193,
+  "wall_ms": 2196
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

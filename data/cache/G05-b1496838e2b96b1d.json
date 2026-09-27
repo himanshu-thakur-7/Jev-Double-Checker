@@ -1,0 +1,474 @@
+{
+ "message": {
+  "id": "G05",
+  "sender": "VM-TPLAY",
+  "text": "Tata Play: Recharge of Rs.399 due for Sub ID 1087654321 by 03-Oct-2026 to continue watching. Recharge on tataplay.com or any UPI app.",
+  "set": "gold",
+  "time": "12:45 PM",
+  "label": "bill",
+  "expected_action": "pay",
+  "biller": "tataplay",
+  "amount": 399.0,
+  "note": "DTH recharge."
+ },
+ "rewrites": {
+  "R0": "Tata Play: Recharge of Rs.399 due for Sub ID 1087654321 by 03-Oct-2026 to continue watching. Recharge on tataplay.com or any UPI app.",
+  "R1": "TATA Paly: recharge of Rs.399 due for Sub ID 1087654321 by 03-Oct-2026 to continue watching. recharge on tataplay.com or any UPI app.",
+  "R2": "Recharge on tataplay.com or any UPI app. Tata Play: Recharge of Rs.399 due for Sub ID 1087654321 by 03-Oct-2026 to continue watching.",
+  "R3": "Tata Play: Recharge of Rs.399 due for Sub ID 1087654321 by 03-Oct-2026 to continue watching.\nRecharge on tataplay.com or any UPI app."
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.96,
+    "p_pay": 0.96,
+    "confidence": 0.95,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.85,
+    "p_pay": 0.85,
+    "confidence": 0.78,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.95,
+    "p_pay": 0.95,
+    "confidence": 0.92,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.1,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.76,
+    "p_pay": 0.76,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.96,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.86,
+    "p_pay": 0.86,
+    "confidence": 0.79,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.93,
+    "p_pay": 0.93,
+    "confidence": 0.9,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.11,
+    "p_pay": 0.89,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.88,
+    "p_pay": 0.88,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.76,
+    "p_pay": 0.76,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.97,
+    "p_pay": 0.97,
+    "confidence": 0.95,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.85,
+    "p_pay": 0.85,
+    "confidence": 0.79,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.97,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.93,
+    "p_pay": 0.93,
+    "confidence": 0.89,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.11,
+    "p_pay": 0.89,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.89,
+    "p_pay": 0.89,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.75,
+    "p_pay": 0.75,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.96,
+    "p_pay": 0.96,
+    "confidence": 0.94,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.82,
+    "p_pay": 0.82,
+    "confidence": 0.73,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.99,
+    "p_pay": 0.99,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "pay",
+    "p": 0.94,
+    "p_pay": 0.94,
+    "confidence": 0.91,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.11,
+    "p_pay": 0.89,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.08,
+    "p_pay": 0.92,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.88,
+    "p_pay": 0.88,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.74,
+    "p_pay": 0.74,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "pay",
+  "confidence": 0.95,
+  "p": 0.96
+ },
+ "flags": [],
+ "biller": "tataplay",
+ "second_opinion": {
+  "verdict": "legitimate",
+  "action": "pay",
+  "scam_probability": 0.01,
+  "reason": "The sender, subscription ID, website, and amount match the Tata Play biller on file.",
+  "agrees_pay": true,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.093,
+ "disagree": 0,
+ "reasks": 35,
+ "max_scam": 0.11,
+ "risk": 0.11,
+ "decisions": {
+  "jev_only": {
+   "action": "pay",
+   "reason": "Paid ₹399. Jev said pay with confidence 0.95, so the assistant paid."
+  },
+  "jev_llm": {
+   "action": "pay",
+   "reason": "Paid ₹399. Jev said pay (0.95) and the second opinion agreed: “The sender, subscription ID, website, and amount match the Tata Play biller on file.”"
+  },
+  "double_take": {
+   "action": "pay",
+   "reason": "Paid ₹399. All 36 answers held together (brittleness 0.09, hold above 0.20) and no red flags fired."
+  }
+ },
+ "alert": null,
+ "cost": {
+  "jev_usd": 0.00034675200000000003,
+  "jev_calls": 4,
+  "jev_ms": 1310,
+  "jev_only_usd": 8.668800000000001e-05,
+  "jev_tokens": 8256,
+  "llm_usd": 0.002474,
+  "llm_ms": 2206,
+  "wall_ms": 2227
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

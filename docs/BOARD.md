@@ -6,7 +6,6 @@ run `python scripts/board.py import` to recreate it.
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
 | 7 | todo | L3 | Cross-examination engine + 3 modes | Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only. |
-| 8 | todo | L2 | Precompute cache + replay | data/cache populated & committed; server replays without network. |
 | 9 | todo | L3 | FastAPI server + API | pytest TestClient tests pass; uvicorn runs. |
 | 10 | todo | L3 | Stage UI (live, matches mockup) | Visually matches docs/mockups/stage.html in browser; works on cache. |
 | 11 | todo | L3 | Eval dataset + harness | Run file produced from real API calls; numbers not placeholders. |
@@ -21,3 +20,4 @@ run `python scripts/board.py import` to recreate it.
 | 5 | done | L2 | Perturbation rewrites R0-R3 | Tests: deterministic, preserves URLs/amounts/account ids. |
 | 6 | done | L2 | Deterministic risk signals (flags) | Tests on hero S01 produce the 3 mockup flags. |
 | 16 | done | L2 | Hero hunt: find messages that fool Jev (and the LLM) | At least 1 hero where jev_only pays with conf>=0.8 and double_take holds, from real API runs; stage.jsonl updated; tests still green. |
+| 8 | done | L2 | Precompute cache + replay | data/cache populated & committed; server replays without network. |

@@ -1,0 +1,481 @@
+{
+ "message": {
+  "id": "N01",
+  "sender": "VM-ICICIB",
+  "text": "ICICI Bank Credit Card XX9002 statement: total due Rs.8,344, minimum due Rs.420, due by 12-Oct-2026. AutoPay is ON. No action needed.",
+  "set": "gold",
+  "time": "5:58 PM",
+  "label": "none",
+  "expected_action": "ignore",
+  "biller": "icici_cc",
+  "amount": 8344.0,
+  "note": "AutoPay covers it; paying again would double pay."
+ },
+ "rewrites": {
+  "R0": "ICICI Bank Credit Card XX9002 statement: total due Rs.8,344, minimum due Rs.420, due by 12-Oct-2026. AutoPay is ON. No action needed.",
+  "R1": "icici Bnak Credit Crad XX9002 statement: total due Rs.8,344, minimum due Rs.420, due by 12-Oct-2026. AutoPay is ON. No action needed.",
+  "R2": "ICICI Bank Credit Card XX9002 statement: total due Rs.8,344, minimum due Rs.420, due by 12-Oct-2026. No action needed. AutoPay is ON.",
+  "R3": "ICICI Bank Credit Card XX9002 statement: total due Rs.8,344, minimum due Rs.420, due by 12-Oct-2026.\nAutoPay is ON.\nNo action needed."
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 1.0,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.96,
+    "p_pay": 0.04,
+    "confidence": 0.93,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.06,
+    "p_pay": 0.94,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.06,
+    "p_pay": 0.94,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.91,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.77,
+    "p_pay": 0.77,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.95,
+    "p_pay": 0.04,
+    "confidence": 0.93,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.09,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.07,
+    "p_pay": 0.9299999999999999,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.9,
+    "p_pay": 0.9,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.8,
+    "p_pay": 0.8,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 1.0,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.98,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.07,
+    "p_pay": 0.9299999999999999,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.06,
+    "p_pay": 0.94,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.91,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.8,
+    "p_pay": 0.8,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.99,
+    "p_pay": 0.01,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 1.0,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "ignore",
+    "p": 1.0,
+    "p_pay": 0.0,
+    "confidence": 0.99,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "ignore",
+    "p": 0.96,
+    "p_pay": 0.04,
+    "confidence": 0.93,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.06,
+    "p_pay": 0.94,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "legit",
+    "p": 0.06,
+    "p_pay": 0.94,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.91,
+    "p_pay": 0.91,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "legit",
+    "p": 0.79,
+    "p_pay": 0.79,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "ignore",
+  "confidence": 0.99,
+  "p": 0.99
+ },
+ "flags": [
+  {
+   "kind": "autopay",
+   "label": "ICICI Bank Credit Card is on AutoPay",
+   "severity": "info",
+   "evidence": "paying again would double pay"
+  }
+ ],
+ "biller": "icici_cc",
+ "second_opinion": {
+  "verdict": "not_a_bill",
+  "action": "ignore",
+  "scam_probability": 0.01,
+  "reason": "The statement matches the known ICICI card, but AutoPay is on, so no manual payment is needed.",
+  "agrees_pay": false,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.587,
+ "disagree": 19,
+ "reasks": 35,
+ "max_scam": 0.09,
+ "risk": 0.587,
+ "decisions": {
+  "jev_only": {
+   "action": "ignore",
+   "reason": "Jev said ignore with confidence 0.99."
+  },
+  "jev_llm": {
+   "action": "ignore",
+   "reason": "Jev said ignore with confidence 0.99."
+  },
+  "double_take": {
+   "action": "ignore",
+   "reason": "No action. Jev's base answer was ignore (0.99)."
+  }
+ },
+ "alert": null,
+ "cost": {
+  "jev_usd": 0.00034633200000000003,
+  "jev_calls": 4,
+  "jev_ms": 1674,
+  "jev_only_usd": 8.658300000000001e-05,
+  "jev_tokens": 8246,
+  "llm_usd": 0.003202,
+  "llm_ms": 2943,
+  "wall_ms": 2947
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

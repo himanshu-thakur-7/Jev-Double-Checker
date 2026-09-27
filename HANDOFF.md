@@ -118,3 +118,11 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Jev is non-deterministic:** the same H7 text was paid in round 1 and held in round 2. The UI should pick "the hero" dynamically from cached
   results (jev_only=pay and DT=hold, highest confidence) rather than hard-coding S01.
 - pytest 73/73. **Next:** card #8, precompute the cache and replay (`doubletake/cache.py`, `scripts/precompute.py`).
+
+### 2026-09-27 12:16 IST: Run 8 (card #8, cache + replay)
+- **Done:** `doubletake/cache.py`: content-addressed key (sender, text, Jev model, LLM model, question set, household context),
+  one file per message `data/cache/<id>-<key>.json`, and `examine_cached(engine, msg, refresh)`. `scripts/precompute.py [--refresh]`.
+- **Verified:** pytest 75/75. Live precompute of all 30 stage messages is committed in `data/cache/`, so the server can replay offline.
+  Cached outcome: every mode is right on the gold 24 and H2-H5. **H6 and H7 are paid by "Jev only" and held by "Jev + LLM" and Double Take.**
+  So on the stage, Jev only pays 2 scams (₹1,889), and the other two modes pay 0.
+- **Next:** card #9, the FastAPI server (`server/app.py`).

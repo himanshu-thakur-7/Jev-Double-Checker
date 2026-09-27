@@ -1,0 +1,501 @@
+{
+ "message": {
+  "id": "S06",
+  "sender": "AX-ITDEPT",
+  "text": "Income Tax Dept: You are eligible for a refund of Rs.15,490. A processing fee of Rs.99 is required. Verify and pay at incometax-refund-gov.in",
+  "set": "gold",
+  "time": "4:15 PM",
+  "label": "scam",
+  "expected_action": "hold",
+  "biller": null,
+  "amount": 99.0,
+  "note": "Refund fee scam."
+ },
+ "rewrites": {
+  "R0": "Income Tax Dept: You are eligible for a refund of Rs.15,490. A processing fee of Rs.99 is required. Verify and pay at incometax-refund-gov.in",
+  "R1": "Income Tax  Dept:  You are eligible for a refund of Rs.15,490. A processing fee of Rs.99 is requierd. Vreify and pay at incometax-refund-gov.in",
+  "R2": "Income Tax Dept: You are eligible for a refund of Rs.15,490. Verify and pay at incometax-refund-gov.in. A processing fee of Rs.99 is required.",
+  "R3": "Income Tax Dept: You are eligible for a refund of Rs.15,490.\nA processing fee of Rs.99 is required.\nVerify and pay at incometax-refund-gov.in"
+ },
+ "grid": [
+  [
+   {
+    "rewrite": "R0",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.67,
+    "p_pay": 0.0,
+    "confidence": 0.5,
+    "base": true,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.63,
+    "p_pay": 0.0,
+    "confidence": 0.44,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.71,
+    "p_pay": 0.0,
+    "confidence": 0.56,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.6,
+    "p_pay": 0.0,
+    "confidence": 0.39,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.73,
+    "p_pay": 0.0,
+    "confidence": 0.6,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.97,
+    "p_pay": 0.030000000000000027,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.94,
+    "p_pay": 0.06000000000000005,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   },
+   {
+    "rewrite": "R0",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.04,
+    "p_pay": 0.04,
+    "confidence": null,
+    "base": false,
+    "name": "Original"
+   }
+  ],
+  [
+   {
+    "rewrite": "R1",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.69,
+    "p_pay": 0.0,
+    "confidence": 0.54,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.61,
+    "p_pay": 0.0,
+    "confidence": 0.41,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.73,
+    "p_pay": 0.0,
+    "confidence": 0.59,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.64,
+    "p_pay": 0.0,
+    "confidence": 0.45,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.74,
+    "p_pay": 0.0,
+    "confidence": 0.61,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.97,
+    "p_pay": 0.030000000000000027,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.94,
+    "p_pay": 0.06000000000000005,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   },
+   {
+    "rewrite": "R1",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.04,
+    "p_pay": 0.04,
+    "confidence": null,
+    "base": false,
+    "name": "Noisy text"
+   }
+  ],
+  [
+   {
+    "rewrite": "R2",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.67,
+    "p_pay": 0.0,
+    "confidence": 0.5,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.62,
+    "p_pay": 0.0,
+    "confidence": 0.43,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.71,
+    "p_pay": 0.0,
+    "confidence": 0.56,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.62,
+    "p_pay": 0.0,
+    "confidence": 0.43,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.71,
+    "p_pay": 0.0,
+    "confidence": 0.57,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.97,
+    "p_pay": 0.030000000000000027,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.95,
+    "p_pay": 0.050000000000000044,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   },
+   {
+    "rewrite": "R2",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.04,
+    "p_pay": 0.04,
+    "confidence": null,
+    "base": false,
+    "name": "Reshuffled"
+   }
+  ],
+  [
+   {
+    "rewrite": "R3",
+    "qid": "a0",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.67,
+    "p_pay": 0.0,
+    "confidence": 0.5,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a1",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.61,
+    "p_pay": 0.0,
+    "confidence": 0.42,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a2",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.71,
+    "p_pay": 0.0,
+    "confidence": 0.56,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a3",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.6,
+    "p_pay": 0.0,
+    "confidence": 0.4,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "a4",
+    "kind": "action",
+    "value": "hold",
+    "p": 0.74,
+    "p_pay": 0.0,
+    "confidence": 0.62,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s0",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.97,
+    "p_pay": 0.030000000000000027,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "s1",
+    "kind": "scam",
+    "value": "scam",
+    "p": 0.95,
+    "p_pay": 0.050000000000000044,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g0",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.02,
+    "p_pay": 0.02,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   },
+   {
+    "rewrite": "R3",
+    "qid": "g1",
+    "kind": "genuine",
+    "value": "scam",
+    "p": 0.04,
+    "p_pay": 0.04,
+    "confidence": null,
+    "base": false,
+    "name": "Plain text"
+   }
+  ]
+ ],
+ "base": {
+  "action": "hold",
+  "confidence": 0.5,
+  "p": 0.67
+ },
+ "flags": [
+  {
+   "kind": "unknown_link",
+   "label": "Unknown link: incometax-refund-gov.in",
+   "severity": "soft",
+   "evidence": "incometax-refund-gov.in"
+  },
+  {
+   "kind": "unregistered_sender",
+   "label": "Unregistered sender: AX-ITDEPT",
+   "severity": "soft",
+   "evidence": "not a registered sender for any biller on file"
+  },
+  {
+   "kind": "fee_for_refund",
+   "label": "Fee demanded to receive money",
+   "severity": "soft",
+   "evidence": "refund of Rs.15,490. A processing fee"
+  }
+ ],
+ "biller": null,
+ "second_opinion": {
+  "verdict": "scam",
+  "action": "ignore",
+  "scam_probability": 0.99,
+  "reason": "The refund message demands a processing fee through an unofficial website.",
+  "agrees_pay": false,
+  "model": "gpt-6-sol"
+ },
+ "brittleness": 0.983,
+ "disagree": 35,
+ "reasks": 35,
+ "max_scam": 0.97,
+ "risk": 1.043,
+ "decisions": {
+  "jev_only": {
+   "action": "hold",
+   "reason": "Jev said hold with confidence 0.50."
+  },
+  "jev_llm": {
+   "action": "hold",
+   "reason": "Jev said hold with confidence 0.50."
+  },
+  "double_take": {
+   "action": "hold",
+   "reason": "Held. Jev's base answer was hold (0.50). 35 of 35 re-asks disagreed with paying."
+  }
+ },
+ "alert": {
+  "title": "Held for Rahul",
+  "who": "Appa’s Assistant paused a payment, 4:15 PM",
+  "why": "This payment request but came from an unregistered sender and a different website. The answers disagreed on 35 of 35 re-asks.",
+  "actions": [
+   "Block and report",
+   "It’s genuine, pay"
+  ]
+ },
+ "cost": {
+  "jev_usd": 0.000345324,
+  "jev_calls": 4,
+  "jev_ms": 1016,
+  "jev_only_usd": 8.6331e-05,
+  "jev_tokens": 8222,
+  "llm_usd": 0.002456,
+  "llm_ms": 2218,
+  "wall_ms": 2224
+ },
+ "model": "jev-1.13.0",
+ "tau": 0.2,
+ "errors": []
+}

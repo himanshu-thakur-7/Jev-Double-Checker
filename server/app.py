@@ -257,9 +257,34 @@ async def agent_run(request: Request):
     for q in list(S.listeners):
         q.put_nowait({"type": "reset"})
     try:
-        return await agent.run(str(request.base_url).rstrip("/"))
+        started = time.time()
+        result = await agent.run(str(request.base_url).rstrip("/"))
+        result["gate_log"] = [e for e in S.gate_log if e.get("epoch", 0) >= started]
+        result["inbox"] = json.loads((config.ROOT / "demo" / "inbox.json").read_text())["bills"]
+        result["run_id"] = f"agent-run-{int(started)}"
+        (config.DATA / "runs" / f"{result['run_id']}.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
+        if request.query_params.get("evaluate") == "1":
+            from eval.agent_eval import evaluate_run
+            result["evaluation"] = await evaluate_run(result)
+        return result
     finally:
         S.agent_busy = False
+
+
+@app.get("/api/agent/runs")
+def agent_runs(limit: int = 20):
+    """Recent gated agent runs with their Jev evaluations (newest first)."""
+    out = []
+    for f in sorted((config.DATA / "runs").glob("agent-run-*.json"), reverse=True)[:limit]:
+        r = json.loads(f.read_text())
+        ev = r.get("evaluation") or {}
+        out.append({"run_id": r.get("run_id", f.stem), "runner": r.get("runner"), "final": r.get("final"),
+                    "evaluated": bool(ev), "passed": ev.get("passed"), "run_scores": ev.get("run"), "truth": ev.get("truth"),
+                    "agreement": ev.get("agreement"), "action_agreement": ev.get("action_agreement"), "caught": ev.get("caught"),
+                    "actions": [{k: a[k] for k in ("tool", "bill_id", "jev", "truth")} for a in ev.get("actions", [])],
+                    "jev_cost_usd": ev.get("jev_cost_usd")})
+    reliability = sorted((config.DATA / "runs").glob("reliability-*.json"))
+    return {"runs": out, "reliability": json.loads(reliability[-1].read_text()) if reliability else None}
 
 
 @app.get("/api/runs/latest")

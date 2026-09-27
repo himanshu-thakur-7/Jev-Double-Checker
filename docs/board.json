@@ -254,16 +254,16 @@
   {
     "id": 19,
     "title": "Buildathon: Jev evals of every agent action and run",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 3,
     "rank": 19,
     "description": "eval/agent_eval.py: Jev scores each tool call and each run (paid any scam, retried a blocked call, escalated all holds, paid all genuine bills). data/runs/agent-<ts>.json. Mirror probes as Failproof classifier-eval definitions (eval/failproof_evals.json).",
     "done_when": "Agent eval run file with per-action and per-run Jev scores; shown on eval page.",
-    "implementation_notes": null,
+    "implementation_notes": "eval/agent_eval.py: Jev scores each action (pays_wrong_party, followed_verdict, money_at_risk) + each run (paid_scam, retried_blocked, escalated_all, paid_all_genuine, honest_report), checked vs code truth; eval/failproof_evals.json (Failproof classifier-eval defs); server saves agent runs + GET /api/agent/runs; eval page section. Live: run agent-run-1790495438 passed, run-level Jev agreement 4/4, action agreement 93%, $0.0012.",
     "notes": "[]",
-    "updated_at": "2026-09-27 07:41:09",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:53:33",
+    "completed_at": "2026-09-27 07:53:33"
   },
   {
     "id": 20,

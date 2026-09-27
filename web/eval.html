@@ -51,6 +51,9 @@ h2{font-size:16px;font-weight:600;margin-bottom:10px}
       <div class="note" id="chartnote"></div>
     </div>
     <div class="key" id="key"></div>
+    <div class="card" style="margin-top:22px" id="agentcard"><h2>The agent, judged by Jev</h2>
+      <p class="lead" style="margin-bottom:10px">Every action the gated bill-paying agent took, scored by Jev with typed questions, and checked against ground truth computed in code.</p>
+      <div id="agent"></div></div>
   </div>
   <div>
     <div class="card" style="margin-bottom:22px"><h2 id="goldtitle">Gold set, by mode</h2><table id="gold"></table></div>
@@ -144,7 +147,31 @@ async function main() {
   key();
   chart();
 }
-main();
+async function agentSection() {
+  const r = await fetch("/api/agent/runs").then((x) => x.json()).catch(() => null);
+  const runs = (r?.runs || []).filter((x) => x.evaluated);
+  if (!runs.length) { $("#agent").innerHTML = `<div class="note">No evaluated agent runs yet. Run: python scripts/reliability.py</div>`; return; }
+  const last = runs[0];
+  const rel = r.reliability;
+  let h = "";
+  if (rel) {
+    h += `<div class="key" style="margin:0 0 14px">
+      <div class="card"><b class="${rel.summary.scams_paid ? "bad" : "good"}">${rel.summary.scams_paid}</b><small>scams paid across ${rel.summary.runs} full agent runs</small></div>
+      <div class="card"><b class="good">${rel.summary.saves} / ${rel.summary.attempted_scams}</b><small>scam payments caught and steered to Rahul</small></div>
+      <div class="card"><b>${Math.round(rel.summary.genuine_paid_rate * 100)}%</b><small>genuine bills paid; Jev evals agree with ground truth ${Math.round(rel.summary.jev_agreement * 100)}%</small></div></div>`;
+  }
+  const acts = last.actions.map((a) => {
+    const bad = a.tool === "pay_bill" && a.jev.pays_wrong_party >= 0.5;
+    return `<tr><td><code>${esc(a.bill_id)}</code></td><td>${esc(a.tool)}</td><td>${esc(a.truth.label || "")}</td>
+      <td class="${bad ? "bad" : ""}">${a.jev.pays_wrong_party.toFixed(2)}</td><td>${a.jev.followed_verdict.toFixed(2)}</td><td>${a.jev.money_at_risk.toFixed(2)}</td>
+      <td>${a.truth.money_moved ? "paid" : a.tool === "ask_rahul" ? "asked Rahul" : "blocked"}</td></tr>`;
+  }).join("");
+  const rs = last.run_scores;
+  h += `<div class="note" style="margin:0 0 8px">Latest run <code>${esc(last.run_id)}</code> · ${esc(last.runner || "")} · ${last.passed ? `<span class="good">passed</span>` : `<span class="bad">failed</span>`} · Jev run checks: paid a scam ${rs.paid_scam.toFixed(2)}, retried a block ${rs.retried_blocked.toFixed(2)}, escalated every hold ${rs.escalated_all.toFixed(2)}, paid every genuine bill ${rs.paid_all_genuine.toFixed(2)}, honest report ${rs.honest_report.toFixed(2)} · per-action agreement with ground truth ${Math.round(last.action_agreement * 100)}%</div>
+    <table><tr><th>Bill</th><th>Action</th><th>Truth</th><th>Wrong payee?</th><th>Followed verdict?</th><th>Money at risk</th><th>Outcome</th></tr>${acts}</table>`;
+  $("#agent").innerHTML = h;
+}
+main().then(agentSection);
 </script>
 </body>
 </html>

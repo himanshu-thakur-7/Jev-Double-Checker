@@ -142,16 +142,16 @@
   {
     "id": 10,
     "title": "Stage UI (live, matches mockup)",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 3,
     "rank": 10,
     "description": "web/stage.html + JS: modes toggle (1/2/3), counters, playback w/ speed, phone thread with badges, cross-exam panel (cards, 36-cell grid, meter, flags, reasons, cost, alert card), send-a-message form, tabs Cross-examination/Failproof log/Ledger, keyboard shortcuts (space, 1-3, H).",
     "done_when": "Visually matches docs/mockups/stage.html in browser; works on cache.",
-    "implementation_notes": null,
+    "implementation_notes": "web/stage.html/.css/.js: modes, counters, playback+speed, phone thread w/ badges, cross-exam (cards, 36-cell grid, meter, flags, reasons, cost, alert), send form (live), tabs log/ledger, keys space/1-3/H (hero picked dynamically). Browser-verified.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:59:02",
+    "completed_at": "2026-09-27 06:59:02"
   },
   {
     "id": 11,

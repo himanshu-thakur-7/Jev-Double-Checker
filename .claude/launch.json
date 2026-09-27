@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {"name": "doubletake", "runtimeExecutable": ".venv/bin/uvicorn", "runtimeArgs": ["server.app:app", "--port", "8765"], "port": 8765}
+  ]
+}

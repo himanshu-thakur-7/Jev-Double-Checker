@@ -136,3 +136,16 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Verified:** pytest 81/81 (TestClient on the committed cache). Live server: ledger Jev-only paid ₹19,543 incl. **2 scams**; Jev+LLM and DT paid ₹17,654 with 0 scams.
   Stage cost: Jev-only $0.0026, Jev+LLM $0.080, DT $0.088. A POST examine of a new lookalike message took 2.9 s and was held.
 - **Next:** card #10, the stage UI (`web/stage.html`), matching `docs/mockups/stage.html` but driven by the API.
+
+### 2026-09-27 12:29 IST: Run 10 (card #10, stage UI)
+- **Done:** `web/stage.html`, `web/stage.css` (mockup tokens and layout, fluid height, min-width 1280) and `web/stage.js` (vanilla JS, no build).
+  Loads `/api/messages` + every cached examination, then plays messages in time order at 0.5/1/2×. Phone badges and top counters are computed per mode.
+  Cross-examination tab: base answer card, second-opinion card (dimmed in Jev-only), the 4×9 grid (base cell ringed, muted outside DT, tooltips with probabilities
+  and the rewritten text), brittleness meter with a τ marker, flags (hard = filled), reasons, per-message cost, and the "Held for Rahul" alert with working buttons.
+  Outside DT, a paid scam says "Double Take would have held it (brittleness x)". Failproof log tab subscribes to `/api/gate/stream` (SSE).
+  Ledger tab shows totals for all modes plus rows for the current one. The send form POSTs `/api/examine` live. Keys: Space, 1/2/3, and **H = the most confident
+  scam that Jev-only paid and DT held, chosen from real data** (currently H6). "Run Codex under Failproof" calls `POST /api/agent/run` (card #13).
+- **Verified in the browser (preview config at the session root, `.claude/launch.json` in repo too):** counters after full playback match `/api/ledger` exactly
+  (Jev only ₹19,543 / 2 scams; Jev+LLM and DT ₹17,654 / 0 scams / 14 held). H opens H6 (Jev "Pay now" 0.75, 4/35 disagree, brittleness 0.33, alert shown).
+  A live custom lookalike-link message: Jev base pay 0.62, 18/35 disagree, held in 4.6 s. No console errors. Fixed a blank-thread flash (smooth scroll removed).
+- **Next:** card #11, the eval dataset and harness (`eval/`, writes `data/runs/eval-<ts>.json`).

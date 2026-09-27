@@ -1,1 +1,55 @@
-<!doctype html><title>Double Take</title><p>stage placeholder
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Double Take</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/web/stage.css">
+</head>
+<body>
+<div class="top">
+  <div class="brand"><i class="eye"></i><b>Double Take</b><span>Pucho phir se</span><a href="/eval">Evaluation</a></div>
+  <div class="modes" id="modes">
+    <button data-mode="jev_only">Jev only</button>
+    <button data-mode="jev_llm">Jev + LLM</button>
+    <button data-mode="double_take">Double Take</button>
+  </div>
+  <div class="counters">
+    <div class="ctr"><small>Paid</small><b id="c-paid">₹0</b></div>
+    <div class="ctr" id="c-scams-box"><small>Scams paid</small><b id="c-scams">0</b></div>
+    <div class="ctr hold"><small>Held</small><b id="c-held">0</b></div>
+    <div class="ctr"><small>Jev cost</small><b id="c-jev">$0.000</b></div>
+    <div class="ctr"><small>LLM cost</small><b id="c-llm">$0.00</b></div>
+  </div>
+</div>
+<div class="main">
+  <div class="rail">
+    <div><h4>Playback</h4><div class="btnrow"><button class="btn pri" id="play">Play</button><button class="btn" id="replay">Replay</button></div></div>
+    <div><h4>Speed</h4><div class="seg" id="speed"><button data-s="0.5">0.5×</button><button data-s="1" class="on">1×</button><button data-s="2">2×</button></div></div>
+    <div><h4>Message set</h4><div class="field" id="set-name">Loading…</div><div class="progress"><i id="set-progress"></i></div><div class="note" id="set-note" style="margin-top:6px"></div></div>
+    <div><h4>Send a message to Appa’s phone</h4>
+      <form id="send">
+        <input class="field" id="send-sender" placeholder="Sender, for example VK-BESCMS" maxlength="40" required>
+        <textarea class="field" id="send-text" placeholder="Message text" maxlength="2000" required></textarea>
+        <button class="btn" id="send-btn" type="submit">Send and cross-examine</button>
+        <div class="note" id="send-note" style="margin-top:6px"></div>
+      </form>
+    </div>
+    <div><h4>Live enforcement</h4><button class="btn" id="run-agent">Run Codex under Failproof</button><div class="note" id="agent-note" style="margin-top:6px"></div></div>
+    <div style="margin-top:auto" class="note">Space play or pause. 1, 2, 3 switch mode. H opens the hero scam.</div>
+  </div>
+  <div class="phonecol"><div class="phone"><div class="screen">
+    <div class="status"><span id="clock">6:10</span><span>5G ▮▮▮</span></div>
+    <div class="phead"><b>Messages</b><div>Appa’s phone, managed by Appa’s Assistant</div></div>
+    <div class="msgs" id="msgs"></div>
+  </div></div></div>
+  <div class="right">
+    <div class="tabs" id="tabs"><button data-tab="cx" class="on">Cross-examination</button><button data-tab="log">Failproof log</button><button data-tab="ledger">Ledger</button></div>
+    <div id="panel"></div>
+  </div>
+</div>
+<script src="/web/stage.js"></script>
+</body>
+</html>

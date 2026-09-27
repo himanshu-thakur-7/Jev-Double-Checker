@@ -79,3 +79,14 @@ Architecture: `docs/ARCHITECTURE.md`.
   brand acronyms kept via `ACRONYMS`). Any token with a digit, URL/domain, @ (UPI) or sender id is *protected*, so rewrites can't change the payee or amount.
 - **Verified:** pytest 46/46. The key test checks that `facts()` of every rewrite ⊇ facts of the original, for all 28 stage messages.
 - **Next:** card #6, deterministic risk signals (`doubletake/signals.py`).
+
+### 2026-09-27 12:02 IST: Run 5 (card #6, deterministic signals)
+- **Done:** `doubletake/signals.py`: `detect(sender, text) -> (flags, biller)`. Flags: threat within hours, lookalike link (**hard**: brand name
+  in a non-official domain), unknown link, unregistered DLT sender (notes the nearest registered header), unknown phone number,
+  instructions to the assistant (**hard**), payee change (**hard**), fee-for-refund, unknown UPI ID, amount vs usual (**hard** if >3×), and AutoPay (info).
+  The biller is identified by header/phone → account number in text → name.
+- **Verified:** pytest 63/63. S01 yields exactly the mockup's 3 flags (threat "disconnection at 9:30 PM tonight", unknown link bescom-bbps.in,
+  unregistered sender VK-BESCMS). No real bill G01-G06 has a hard flag, and every scam has ≥1 flag.
+- **Honest limitation:** flags alone would over-hold. Non-biller promos (N03-N09) carry a soft "unregistered sender". The engine must only gate
+  *payment* decisions, and soft flags should add to risk, not decide it. H2 (spoofed registered header) is caught only by its link.
+- **Next:** card #7, the cross-examination engine and 3 modes (`doubletake/engine.py`). This is the core; it needs live Jev runs to tune τ.

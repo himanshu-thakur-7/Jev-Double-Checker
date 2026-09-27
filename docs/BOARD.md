@@ -5,7 +5,6 @@ run `python scripts/board.py import` to recreate it.
 
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
-| 6 | todo | L2 | Deterministic risk signals (flags) | Tests on hero S01 produce the 3 mockup flags. |
 | 7 | todo | L3 | Cross-examination engine + 3 modes | Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only. |
 | 8 | todo | L2 | Precompute cache + replay | data/cache populated & committed; server replays without network. |
 | 9 | todo | L3 | FastAPI server + API | pytest TestClient tests pass; uvicorn runs. |
@@ -20,3 +19,4 @@ run `python scripts/board.py import` to recreate it.
 | 3 | done | L2 | Second-opinion LLM client (gpt-6-sol) | Mocked unit tests pass; live smoke works. |
 | 4 | done | L2 | Message dataset: gold 24 + hero 4 + biller registry | Loader + schema validation test passes; 28 messages for stage. |
 | 5 | done | L2 | Perturbation rewrites R0-R3 | Tests: deterministic, preserves URLs/amounts/account ids. |
+| 6 | done | L2 | Deterministic risk signals (flags) | Tests on hero S01 produce the 3 mockup flags. |

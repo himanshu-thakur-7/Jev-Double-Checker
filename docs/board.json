@@ -72,16 +72,16 @@
   {
     "id": 6,
     "title": "Deterministic risk signals (flags)",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 6,
     "description": "doubletake/signals.py: threat-within-hours, unknown link (domain not official for biller), unregistered sender, lookalike domain/sender (edit distance), instructions-to-assistant injection, amount mismatch vs usual. Returns flags with severity hard/soft + quoted evidence.",
     "done_when": "Tests on hero S01 produce the 3 mockup flags.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/signals.py detect(sender,text)->(flags,biller): threat, lookalike/unknown link, unregistered sender, unknown number, injection, payee change, fee-for-refund, unknown UPI, amount vs usual, autopay; 17 tests",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:32:46",
+    "completed_at": "2026-09-27 06:32:46"
   },
   {
     "id": 7,

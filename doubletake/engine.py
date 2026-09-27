@@ -172,7 +172,7 @@ def decide(msg: Message, cells: list[Cell], flags: list[Flag], op: SecondOpinion
         for f in hard:
             reasons.append(f"{f.label} ({f.evidence}).")
         if op is not None and not op.agrees_pay:
-            reasons.append(f"The second opinion said {op.verdict}.")
+            reasons.append(second_opinion_phrase(op.verdict, op.action))
         if reasons:
             tail = ""
             if op is not None and op.agrees_pay:
@@ -184,6 +184,13 @@ def decide(msg: Message, cells: list[Cell], flags: list[Flag], op: SecondOpinion
             d["double_take"] = ModeDecision("pay", f"{pay_txt} All {n + 1} answers held together (brittleness {brit:.2f}, "
                                                    f"hold above {TAU:.2f}) and no red flags fired.")
     return d, brit, disagree, n, max_scam
+
+
+def second_opinion_phrase(verdict: str, action: str) -> str:
+    if verdict == "scam":
+        return "The second opinion said scam."
+    label = {"legitimate": "legitimate", "not_a_bill": "not a bill"}.get(verdict, verdict)
+    return f"The second opinion said {action}, not pay (it rated the message {label})."
 
 
 def review_risk(ex: dict) -> float:

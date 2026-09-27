@@ -9,6 +9,15 @@ instead of paid. The same check is exposed as a **Failproof** PreToolUse gate, s
 
 Spec mockups: [`docs/mockups/stage.html`](docs/mockups/stage.html), [`docs/mockups/eval.html`](docs/mockups/eval.html)
 
+## For the Jev buildathon judges
+
+- **Stakes:** an agent that pays an elderly parent's bills from SMS. A wrong `pay_bill` sends his pension to a scammer.
+- **The save:** every `pay_bill` passes the Failproof policy `double-take-gate` (PreToolUse), which asks Jev 36 ways. H6 and H7 are scams **Jev alone pays**.
+  The verdict denies them and the deny message steers the agent to `ask_rahul` instead, which it does.
+- **Reliability:** 5/5 full agent runs passed: 0 scams paid, 20/20 scam attempts caught and steered, 100% of genuine bills paid. Live re-asks gave identical decisions 3/3.
+- **Jev evals:** Jev scores every agent action and run (wrong payee, followed verdict, money at risk, paid a scam, retried, escalated), with 96% agreement with ground truth.
+- Demo script: [docs/DEMO.md](docs/DEMO.md) · Failproof pack with native Jev checks: [failproof/pack](failproof/pack/README.md)
+
 ## Results (real run `eval-1790492806`, 328 messages)
 
 | Mode | Scams paid | Real bills held | Cost / message |

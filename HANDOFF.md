@@ -259,3 +259,12 @@ live tool calls. New cards #17-#22 (see docs/BOARD.md).
 - **Owner-gated:** publishing makes a *public GitHub release* (command in failproof/pack/README.md). Not done. Useful now: `failproofai policies -i -c ./failproof/pack/double-take-pack.mjs`
   enforces the gate on this machine without publishing, once `failproofai config` is done.
 - **Next:** card #22, the demo script + judge one-pager.
+
+### 2026-09-27 13:31 IST: Run 20 (card #22, demo script + judge one-pager)
+- **Done:** `docs/DEMO.md`: pre-demo checklist, a 3-minute script mapped to the three judging criteria (stakes → H6 with confidence vs 36 asks → live agent save
+  with DENY → STEERED → eval page reliability), a numbers table (all from real runs), offline fallback, and honest limits. A README section "For the Jev buildathon judges".
+  Also fixed a confusing reason: when gpt-6-sol rates a message legitimate but says hold, the reason now reads "The second opinion said hold, not pay
+  (it rated the message legitimate)" (engine.second_opinion_phrase; the cached H7 reason was rewritten).
+- **Verified:** pytest 92/92.
+- **Remaining, owner-gated:** #17 (run real Codex under real Failproof) needs the owner to run `failproofai config` + `failproofai jev setup`. The #21 publish needs owner OK.
+  **Rehearsal** of DEMO.md end to end is the last step before 5:15 pm.

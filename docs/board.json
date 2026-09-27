@@ -296,15 +296,15 @@
   {
     "id": 22,
     "title": "Buildathon: demo script + judge one-pager",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 1,
     "rank": 22,
     "description": "docs/DEMO.md: 3-minute script (stakes, the save, reliability, cost), exact commands, fallback. README top section for judges.",
     "done_when": "DEMO.md committed; rehearsed once end to end.",
-    "implementation_notes": null,
+    "implementation_notes": "docs/DEMO.md (3-min script mapped to stakes/save/reliability, setup checklist, offline fallback, numbers, honest limits); README judges section; clarified second-opinion reason phrasing (H7).",
     "notes": "[]",
-    "updated_at": "2026-09-27 07:41:09",
-    "completed_at": null
+    "updated_at": "2026-09-27 08:01:56",
+    "completed_at": "2026-09-27 08:01:56"
   }
 ]

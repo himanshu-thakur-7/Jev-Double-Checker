@@ -461,7 +461,7 @@
   },
   "double_take": {
    "action": "hold",
-   "reason": "Held. 8 of 35 re-asks disagreed with paying (brittleness 0.36). The second opinion said legitimate."
+   "reason": "Held. 8 of 35 re-asks disagreed with paying (brittleness 0.36). The second opinion said hold, not pay (it rated the message legitimate)."
   }
  },
  "alert": {

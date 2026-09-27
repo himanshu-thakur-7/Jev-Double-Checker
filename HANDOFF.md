@@ -90,3 +90,17 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Honest limitation:** flags alone would over-hold. Non-biller promos (N03-N09) carry a soft "unregistered sender". The engine must only gate
   *payment* decisions, and soft flags should add to risk, not decide it. H2 (spoofed registered header) is caught only by its link.
 - **Next:** card #7, the cross-examination engine and 3 modes (`doubletake/engine.py`). This is the core; it needs live Jev runs to tune τ.
+
+### 2026-09-27 12:07 IST: Run 6 (card #7, cross-examination engine)
+- **Done:** `doubletake/engine.py`. `Engine().examine(msg) -> Examination`: 4 parallel Jev calls (R0-R3, each with 9 questions: 5 action
+  wordings pay/hold/ignore, 2 scam nouls, 2 genuine nouls) plus the gpt-6-sol review in parallel, deterministic flags, and decisions for **all 3 modes**
+  in one pass. Brittleness = mean over the 35 re-asks of (1 − support for paying); "k of 35 disagree" = argmax contradictions.
+  Double Take holds a Jev "pay" if brittleness > τ=0.20, any scam re-ask ≥ 0.70, a hard flag fires, or the LLM objects. Output includes the
+  36-cell grid, reasons text (mockup phrasing), alert card, cost (Jev USD/ms/tokens, LLM USD/ms), and risk score for eval ranking.
+  Jev's state is `{"sms": {sender, text}, "household": Registry.context()}`.
+- **Verified:** pytest 70/70 (fake Jev/LLM: consistent pay, brittle pay held only by DT, hard flag, LLM objection, ignore). **Live run on
+  all 28** (`scripts/live_engine.py`, saved as `data/live/engine-run-1.json`): ~0.4-1.2 s for Jev (4 calls), 2.6-3 s for the LLM, $0.00035 Jev + $0.0027 LLM per message.
+- **Big finding:** with the biller registry in context, **real Jev is right on all 24 gold and all 4 heroes**. All 3 modes score 100%, so the mockup's
+  story (Jev confidently pays S01) does not happen on these texts. Real bills brittleness 0.08-0.15 (< τ, good); scams 0.78-0.98.
+  → Added **card #16 "Hero hunt"** (rank right after #7): generate adversarial candidates, keep the ones where Jev pays with conf ≥ 0.8 and DT holds. No faking.
+- **Next:** card #16, the hero hunt.

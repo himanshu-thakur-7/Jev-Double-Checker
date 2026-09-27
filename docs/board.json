@@ -98,6 +98,20 @@
     "completed_at": null
   },
   {
+    "id": 16,
+    "title": "Hero hunt: find messages that fool Jev (and the LLM)",
+    "status": "todo",
+    "priority": "high",
+    "level": 2,
+    "rank": 7,
+    "description": "Live run 1 (data/live/engine-run-1.json): with the household registry in context, Jev is right on all 24 gold + 4 heroes, so the mockup story (Jev pays the hero confidently) does not happen on current texts. Generate adversarial candidates (gpt-6-sol red-team rewrites of S01/H2/H5 etc. that keep the scam facts: lookalike link or payee, but sound routine; plus subtle variants such as an official-looking subdomain or a registered header with a small link change), run the engine, and keep those where Jev base=pay with conf>=0.8. Promote the best (ideally Jev AND LLM pay, DT holds) into stage.jsonl as heroes; keep the honest record in data/live. Reuse the generator for eval rt-* in card #11.",
+    "done_when": "At least 1 hero where jev_only pays with conf>=0.8 and double_take holds, from real API runs; stage.jsonl updated; tests still green.",
+    "implementation_notes": null,
+    "notes": "[]",
+    "updated_at": "2026-09-27 06:37:12",
+    "completed_at": null
+  },
+  {
     "id": 8,
     "title": "Precompute cache + replay",
     "status": "todo",

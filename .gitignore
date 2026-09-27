@@ -14,3 +14,4 @@ data/cache/C-*
 data/cache/gate-*
 data/cache/eval/
 demo/ledger.jsonl
+failproof/pack/dist/

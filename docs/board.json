@@ -282,16 +282,16 @@
   {
     "id": 21,
     "title": "Buildathon: Jev semantic checks pack (Failproof native)",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 2,
     "rank": 21,
     "description": "failproofai pack with semanticPolicies bill-payment probes + manifest. Publishing a GitHub release needs owner OK.",
     "done_when": "Pack builds (dry run); published only with owner approval.",
-    "implementation_notes": null,
+    "implementation_notes": "failproof/pack/double-take-pack.mjs: hard custom double-take-gate + 2 Jev semantic checks (payment-to-unverified-payee deny, payment-under-time-pressure instruct). failproofai publish --dry-run builds and validates it (1 policy, 2 semantic). NOT published: public GitHub release needs owner OK.",
     "notes": "[]",
-    "updated_at": "2026-09-27 07:41:09",
-    "completed_at": null
+    "updated_at": "2026-09-27 08:00:13",
+    "completed_at": "2026-09-27 08:00:13"
   },
   {
     "id": 22,

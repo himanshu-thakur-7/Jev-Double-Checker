@@ -6,7 +6,6 @@ run `python scripts/board.py import` to recreate it.
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
 | 17 | todo | L3 | Buildathon: run the agent under real Failproof (Codex + failproofai) | A real Codex run under failproofai: allow for real bills, deny for S01/S07, visible in failproofai logs and on the stage log. |
-| 21 | todo | L2 | Buildathon: Jev semantic checks pack (Failproof native) | Pack builds (dry run); published only with owner approval. |
 | 22 | todo | L1 | Buildathon: demo script + judge one-pager | DEMO.md committed; rehearsed once end to end. |
 | 1 | done | L1 | Repo scaffold + handoff system | Repo pushed to main; `pip install -e .[dev]` + `pytest` runs green (0 tests ok); no secrets committed. |
 | 2 | done | L2 | Jev (TypeSafe) client with cost + latency tracking | Unit tests with respx mocks pass; one live smoke call script prints answers. |
@@ -27,3 +26,4 @@ run `python scripts/board.py import` to recreate it.
 | 18 | done | L2 | Buildathon: the save = deny + steer to the right action | In a live run the agent, after the Jev verdict, calls ask_rahul for S01/S07 instead of paying. |
 | 19 | done | L3 | Buildathon: Jev evals of every agent action and run | Agent eval run file with per-action and per-run Jev scores; shown on eval page. |
 | 20 | done | L2 | Buildathon: reliability across N runs | N>=5 real runs recorded; numbers on eval page. |
+| 21 | done | L2 | Buildathon: Jev semantic checks pack (Failproof native) | Pack builds (dry run); published only with owner approval. |

@@ -249,3 +249,13 @@ live tool calls. New cards #17-#22 (see docs/BOARD.md).
   **Jev-only pays H6 and H7 every time; Jev+LLM and DT hold them every time** (accuracy Jev-only 80%, others 100%), so the save is reproducible, not a lucky run.
   Caveat: inside agent runs the gate replays the cached examination for known bills (fast, deterministic); the live re-examination above is the evidence it'd decide the same.
 - **Next:** card #22, the demo script (#21 native Jev pack needs the owner's OK to publish; #17 needs the owner's Failproof setup).
+
+### 2026-09-27 13:30 IST: Run 19 (card #21, native Failproof Jev pack)
+- **Done:** `failproof/pack/double-take-pack.mjs` + `failproof/pack/README.md`. A hard custom policy **double-take-gate** (on by default, 9 s timeout,
+  fails closed with an escalate instruction) plus two **Jev semantic checks**: `payment-to-unverified-payee` (deny; probes: is it a payment? is the payee or channel
+  not the official biller's?) and `payment-under-time-pressure` (instruct; same-day threat).
+- **Verified:** `failproofai publish ... --dry-run --version 0.1.0` → "Built himanshu-thakur-7/double-take@0.1.0 — 1 policies, 1 on by default. 2 semantic policies
+  for Jev". It validated with Failproof's own loader rules. `dist/` is gitignored.
+- **Owner-gated:** publishing makes a *public GitHub release* (command in failproof/pack/README.md). Not done. Useful now: `failproofai policies -i -c ./failproof/pack/double-take-pack.mjs`
+  enforces the gate on this machine without publishing, once `failproofai config` is done.
+- **Next:** card #22, the demo script + judge one-pager.

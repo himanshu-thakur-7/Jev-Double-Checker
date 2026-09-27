@@ -9,3 +9,6 @@ __pycache__/
 .DS_Store
 node_modules/
 *.egg-info/
+data/gate_log.jsonl
+data/cache/C-*
+data/cache/gate-*

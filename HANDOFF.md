@@ -126,3 +126,13 @@ Architecture: `docs/ARCHITECTURE.md`.
   Cached outcome: every mode is right on the gold 24 and H2-H5. **H6 and H7 are paid by "Jev only" and held by "Jev + LLM" and Double Take.**
   So on the stage, Jev only pays 2 scams (₹1,889), and the other two modes pay 0.
 - **Next:** card #9, the FastAPI server (`server/app.py`).
+
+### 2026-09-27 12:18 IST: Run 9 (card #9, FastAPI server)
+- **Done:** `server/app.py` (run: `.venv/bin/uvicorn server.app:app --port 8765`). Endpoints: `GET /api/messages`, `GET /api/examine/{id}[?refresh=1]`,
+  `POST /api/examine {sender,text}` (live, cached by content, id `C-xxxx`), `GET /api/ledger` (paid, scams paid, held, Jev and LLM USD per mode;
+  Jev+LLM = 1 Jev call + LLM, DT = 4 Jev calls + LLM), `POST /api/gate` (Failproof: `{tool_name, tool_input:{bill_id|message_text, amount, payee}}` →
+  allow/deny with a "... Held for Rahul to review. Do not retry." reason; denies an amount mismatch), `GET/DELETE /api/gate/log`, `GET /api/gate/stream` (SSE),
+  `GET /api/runs/latest`, and pages `/` and `/eval` (placeholders until cards #10 and #12). Without API keys, cached replay still works (live endpoints return 503).
+- **Verified:** pytest 81/81 (TestClient on the committed cache). Live server: ledger Jev-only paid ₹19,543 incl. **2 scams**; Jev+LLM and DT paid ₹17,654 with 0 scams.
+  Stage cost: Jev-only $0.0026, Jev+LLM $0.080, DT $0.088. A POST examine of a new lookalike message took 2.9 s and was held.
+- **Next:** card #10, the stage UI (`web/stage.html`), matching `docs/mockups/stage.html` but driven by the API.

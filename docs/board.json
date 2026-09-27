@@ -128,16 +128,16 @@
   {
     "id": 9,
     "title": "FastAPI server + API",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 3,
     "rank": 9,
     "description": "server/app.py: GET /api/messages, POST /api/examine {sender,text,mode}, GET /api/examine/{id}, POST /api/gate (Failproof), GET /api/ledger, GET /api/runs/latest, serves web/. Ledger tracks paid/held/costs per mode.",
     "done_when": "pytest TestClient tests pass; uvicorn runs.",
-    "implementation_notes": null,
+    "implementation_notes": "server/app.py FastAPI: messages, examine (GET cached / POST live), ledger per mode, gate (+log, SSE stream), runs/latest, static pages; 6 tests; live smoke OK",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:48:48",
+    "completed_at": "2026-09-27 06:48:48"
   },
   {
     "id": 10,

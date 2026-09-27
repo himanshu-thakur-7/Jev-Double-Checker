@@ -44,3 +44,11 @@ Architecture: `docs/ARCHITECTURE.md`.
 - Created kanban board (15 cards, see docs/BOARD.md) and a mirror/restore script `scripts/board.py`.
 - Card #1 done: repo scaffold, pyproject, .gitignore (.env excluded), HANDOFF/ARCHITECTURE/README, mockups in docs/mockups.
 - **Next:** card #2, the Jev client (`doubletake/jev.py`).
+
+### 2026-09-27 11:46 IST: Run 1 (card #2, Jev client)
+- **Done:** `doubletake/config.py` (env/.env settings, pinned `jev-1.13.0`, price $0.042/M input with output free per TypeSafe's rate card)
+  and `doubletake/jev.py` (`JevClient.ask(state, questions)`, `choice()`/`noul()` builders, retry with backoff on 429/5xx/529,
+  and returns answers + tokens + latency_ms + cost_usd).
+- **Verified:** `pytest` 4/4 (respx mocks). Live `scripts/smoke_jev.py` on the hero scam returned hold 0.55, scam 0.93, 1.8 s, $0.000018.
+- **Note:** Jev's answers on the same text vary between calls/wordings (hold 0.79 earlier vs 0.55 now). That variance is exactly the brittleness signal.
+- **Next:** card #3, the second-opinion LLM client (`doubletake/llm.py`, gpt-6-sol).

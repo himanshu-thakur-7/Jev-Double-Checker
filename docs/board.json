@@ -16,16 +16,16 @@
   {
     "id": 2,
     "title": "Jev (TypeSafe) client with cost + latency tracking",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 2,
     "description": "doubletake/jev.py: async httpx POST https://api.typesafe.ai/v1/systemone, Bearer TYPESAFE_API_KEY, model jev-1.13.0 pinned, retries on 429/529 with backoff, returns answers + usage + latency_ms + cost_usd. Price constant configurable.",
     "done_when": "Unit tests with respx mocks pass; one live smoke call script prints answers.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/jev.py + config.py; retries 429/5xx/529; cost $0.042/M input; tests/test_jev.py (4); scripts/smoke_jev.py live OK",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:16:06",
+    "completed_at": "2026-09-27 06:16:06"
   },
   {
     "id": 3,

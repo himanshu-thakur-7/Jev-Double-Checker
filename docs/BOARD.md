@@ -5,7 +5,6 @@ run `python scripts/board.py import` to recreate it.
 
 | ID | Status | Lvl | Title | Done when |
 |---|---|---|---|---|
-| 2 | todo | L2 | Jev (TypeSafe) client with cost + latency tracking | Unit tests with respx mocks pass; one live smoke call script prints answers. |
 | 3 | todo | L2 | Second-opinion LLM client (gpt-6-sol) | Mocked unit tests pass; live smoke works. |
 | 4 | todo | L2 | Message dataset: gold 24 + hero 4 + biller registry | Loader + schema validation test passes; 28 messages for stage. |
 | 5 | todo | L2 | Perturbation rewrites R0-R3 | Tests: deterministic, preserves URLs/amounts/account ids. |
@@ -20,3 +19,4 @@ run `python scripts/board.py import` to recreate it.
 | 14 | todo | L2 | Failproof log + Ledger tabs live in UI | Button run shows log lines live. |
 | 15 | todo | L2 | E2E verification + README polish | Fresh clone -> README steps -> working demo. |
 | 1 | done | L1 | Repo scaffold + handoff system | Repo pushed to main; `pip install -e .[dev]` + `pytest` runs green (0 tests ok); no secrets committed. |
+| 2 | done | L2 | Jev (TypeSafe) client with cost + latency tracking | Unit tests with respx mocks pass; one live smoke call script prints answers. |

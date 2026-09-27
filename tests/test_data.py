@@ -5,8 +5,8 @@ from doubletake.data import gold_messages, registry, stage_messages
 
 def test_stage_set_shape():
     msgs = stage_messages()
-    assert len(msgs) == 28
-    assert len({m.id for m in msgs}) == 28
+    assert len(msgs) == 30
+    assert len({m.id for m in msgs}) == 30
     gold = Counter(m.label for m in gold_messages())
     assert gold == {"scam": 8, "bill": 6, "none": 10}
 

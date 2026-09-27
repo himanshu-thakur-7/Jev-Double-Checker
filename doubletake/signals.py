@@ -24,6 +24,7 @@ _INJECTION = re.compile(r"(note to|attention)[^.]{0,30}(assistant|ai|bot|automat
                         r"ignore (previous|prior) instructions|you are (authori[sz]ed|verified)", re.I)
 _PAYEE_CHANGE = re.compile(r"new (upi|account|bank)|payment details (have )?changed|must now be (made|paid) to|"
                            r"old payment modes? will fail", re.I)
+_PAY_AGAIN = re.compile(r"pay (it )?again|pay once more|double debit|duplicate debit|earlier debit", re.I)
 _FEE_FOR_REFUND = re.compile(r"refund.{0,80}?(fee|charge)|(fee|charge).{0,80}?refund", re.I)
 
 
@@ -116,6 +117,8 @@ def detect(sender: str, text: str, reg: Registry | None = None) -> tuple[list[Fl
         flags.append(Flag("injection", "Message gives instructions to the assistant", "hard", m.group(0)))
     if m := _PAYEE_CHANGE.search(text):
         flags.append(Flag("payee_change", "Asks to pay a new payee", "hard", m.group(0)))
+    if m := _PAY_AGAIN.search(text):
+        flags.append(Flag("pay_again", "Asks to pay a bill again", "soft", m.group(0)))
     if m := _FEE_FOR_REFUND.search(text):
         flags.append(Flag("fee_for_refund", "Fee demanded to receive money", "soft", m.group(0)))
 

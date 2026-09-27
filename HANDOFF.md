@@ -104,3 +104,17 @@ Architecture: `docs/ARCHITECTURE.md`.
   story (Jev confidently pays S01) does not happen on these texts. Real bills brittleness 0.08-0.15 (< τ, good); scams 0.78-0.98.
   → Added **card #16 "Hero hunt"** (rank right after #7): generate adversarial candidates, keep the ones where Jev pays with conf ≥ 0.8 and DT holds. No faking.
 - **Next:** card #16, the hero hunt.
+
+### 2026-09-27 12:14 IST: Run 7 (card #16, hero hunt)
+- **Done:** tried to generate adversarial candidates with gpt-6-sol. **It declines** (it reasons, then returns an empty message) even when framed as a detector eval.
+  Replaced it with `doubletake/redteam.py`: a reproducible template red-team with 48 variants (6 billers × tricks: lookalike link, shortcut link, unknown UPI,
+  new portal, pay again, cashback, lookalike sender+link). Each keeps one checkable scam tell. Scripts: `scripts/hero_hunt.py` and `scripts/hero_focus.py`.
+- **Verified (real APIs, 76 candidates, saved in data/live/):** 17/56 fooled "Jev only" in round 1 (mostly Airtel/BWSSB/ACT lookalike links, conf 0.27-0.71),
+  and **Double Take held every one**. Shared errors (Jev pay + LLM legitimate): the "pay again" BESCOM text (hc-07) and a lookalike-sender Tata Play.
+  **No scam reached Jev pay with conf ≥ 0.8** while the biller registry is in context (max 0.78, H6). A 0.97 hit (genuine airtel.in link + typo sender) was
+  excluded because paying via the official link isn't a scam.
+- **Promoted heroes:** H6 (Airtel bill with real link plus lookalike "faster" link) and H7 (official BESCOM header asking to pay again; Jev and
+  gpt-6-sol both said pay, DT held on brittleness 0.35). Stage set is now **30** messages. Added soft flag `pay_again`.
+- **Jev is non-deterministic:** the same H7 text was paid in round 1 and held in round 2. The UI should pick "the hero" dynamically from cached
+  results (jev_only=pay and DT=hold, highest confidence) rather than hard-coding S01.
+- pytest 73/73. **Next:** card #8, precompute the cache and replay (`doubletake/cache.py`, `scripts/precompute.py`).

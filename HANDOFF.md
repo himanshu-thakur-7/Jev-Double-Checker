@@ -165,3 +165,11 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Honest framing for the eval page:** the mockup's claim ("finds the errors that confidence cannot see") holds for *Jev errors* and the confident error, but there are
   no *shared* confident errors on this set. The strongest real result is that DT's Jev-only check matches Jev+LLM safety at about 1/8 the cost.
 - **Next:** card #12, the eval UI page (`web/eval.html`) drawn from `/api/runs/latest`.
+
+### 2026-09-27 12:41 IST: Run 12 (card #12, eval page)
+- **Done:** `web/eval.html` (mockup's light layout, self-contained) drawn from `/api/runs/latest`. The placeholder warning is replaced by run metadata.
+  Chart: errors caught at review 5/10/20%, low confidence vs Double Take risk, with a dashed "all n" line. A target selector switches between shared confident (0),
+  confident (1) and all Jev money errors (15); it defaults to shared when non-empty, otherwise all. Tables: gold 24 and all 328 across 4 modes (including "Double Take, no LLM").
+  Key numbers: 15 scams Jev alone pays, 0 for DT without the LLM, 7.8× cheaper than Jev+LLM. Error list with "caught at k%" or "missed".
+- **Verified in the browser:** renders run eval-1790492806 with no console errors. The empty shared-confident view shows an honest "nothing to catch" note. pytest 83/83.
+- **Next:** card #13, the Failproof gate policy and Codex agent demo (`failproof/`, `demo/`, `POST /api/agent/run`).

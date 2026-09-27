@@ -1,1 +1,150 @@
-<!doctype html><title>Double Take eval</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Double Take Evaluation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--dusk:#14262E;--ink:#1E272B;--mist:#5E7479;--line:#DCE3E1;--paper:#FBFAF6;--turmeric:#E3A12C;--stone:#9AAAAE;--leaf:#2F9B69;--kumkum:#D24A33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-width:1100px;background:var(--paper);color:var(--ink);font-family:Poppins,system-ui,sans-serif}
+.top{height:64px;display:flex;align-items:center;padding:0 32px;background:var(--dusk);color:#ECF3F1;gap:24px}
+.top b{font-size:20px;font-weight:600}.top span{color:#9DB4B5;font-size:13px}
+.top .back{margin-left:auto;font-size:13px;color:#ECF3F1;border:1px solid #2F4B55;padding:7px 12px;border-radius:10px;text-decoration:none}
+.wrap{padding:28px 40px;display:grid;grid-template-columns:1.35fr 1fr;gap:32px;max-width:1500px}
+h1{font-size:24px;font-weight:600;margin-bottom:4px;letter-spacing:-.2px}
+.lead{color:var(--mist);font-size:14px;margin-bottom:16px;max-width:720px;line-height:1.5}
+.meta{display:inline-block;background:#e4ece9;color:#2c4a44;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.legend{display:flex;gap:18px;font-size:13px;color:var(--mist);margin-bottom:6px;flex-wrap:wrap;align-items:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.seg{display:flex;gap:6px;margin:0 0 14px}.seg button{font:inherit;font-size:12.5px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--mist);cursor:pointer}
+.seg .on{border-color:var(--ink);color:var(--ink);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th{text-align:left;color:var(--mist);font-weight:500;font-size:12.5px;padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:10px 6px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.bad{color:var(--kumkum);font-weight:600}.good{color:var(--leaf);font-weight:600}
+h2{font-size:16px;font-weight:600;margin-bottom:10px}
+.err{display:grid;grid-template-columns:64px 1fr 116px;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+.err code{font-family:"DejaVu Sans Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--mist)}
+.err small{display:block;color:var(--mist);font-size:11.5px}
+.tag{font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;background:#fdf0cf;color:#7a5200;text-align:center}
+.tag.miss{background:#fbe0da;color:#a8321f}
+.note{font-size:12.5px;color:var(--mist);line-height:1.5;margin-top:10px}
+.key{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.key .card{padding:14px 16px}.key b{font-size:22px;display:block}.key small{color:var(--mist);font-size:12px}
+.errlist{max-height:430px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="top"><b>Double Take</b><span id="runmeta">Evaluation</span><a class="back" href="/">Back to the stage</a></div>
+<div class="wrap">
+  <div>
+    <div class="meta" id="badge">Loading the latest run…</div>
+    <h1 id="headline">Double Take finds the errors that confidence cannot see</h1>
+    <p class="lead" id="lead"></p>
+    <div class="card">
+      <div class="seg" id="targets"></div>
+      <div class="legend"><span><i style="background:var(--stone)"></i>Rank by low confidence</span><span><i style="background:var(--turmeric)"></i>Rank by Double Take risk</span></div>
+      <svg id="chart" width="100%" viewBox="0 0 720 360" font-family="Poppins" font-size="13" role="img" aria-label="Errors caught at each review level"></svg>
+      <div class="note" id="chartnote"></div>
+    </div>
+    <div class="key" id="key"></div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:22px"><h2 id="goldtitle">Gold set, by mode</h2><table id="gold"></table></div>
+    <div class="card" style="margin-bottom:22px"><h2 id="alltitle">All messages, by mode</h2><table id="all"></table></div>
+    <div class="card"><h2 id="errtitle">Errors</h2><div class="errlist" id="errs"></div></div>
+  </div>
+</div>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const NAMES = { jev_only: "Jev only", jev_llm: "Jev + LLM", double_take: "Double Take", double_take_jev: "Double Take, no LLM" };
+const TARGETS = {
+  shared_confident: { key: "shared_confident_error", label: "Shared confident errors", desc: "Jev was wrong with confidence 0.8 or more, and the second opinion made the same mistake." },
+  confident: { key: "confident_error", label: "Confident Jev errors", desc: "Jev was wrong with confidence 0.8 or more." },
+  jev_errors: { key: "jev_error", label: "All Jev money errors", desc: "Jev's answer alone would have paid a scam or a no-action message, or skipped a real bill." },
+};
+let run, target;
+
+function usd(x) { return x < 0.001 ? "$" + x.toFixed(5) : "$" + x.toFixed(4); }
+
+function chart() {
+  const c = run.catch[target]; const lv = c.levels; const n = c.n_targets;
+  const max = Math.max(4, n); const step = Math.ceil(max / 4);
+  const top = step * 4; const y = (v) => 320 - (v / top) * 280;
+  let s = `<g stroke="#E7ECEA">${[1, 2, 3, 4].map((i) => `<line x1="60" x2="700" y1="${y(i * step)}" y2="${y(i * step)}"/>`).join("")}</g>
+    <line x1="60" x2="700" y1="320" y2="320" stroke="#9AAAAE"/>
+    <g fill="#5E7479" text-anchor="end">${[0, 1, 2, 3, 4].map((i) => `<text x="50" y="${y(i * step) + 4}">${i * step}</text>`).join("")}</g>`;
+  if (n > 0) s += `<line x1="60" x2="700" y1="${y(n)}" y2="${y(n)}" stroke="#1E272B" stroke-dasharray="4 4"/><text x="700" y="${y(n) - 6}" text-anchor="end" fill="#1E272B" font-size="12">all ${n}</text>`;
+  lv.forEach((l, i) => {
+    const x0 = 110 + i * 210;
+    [["low_confidence", "#9AAAAE", "#5E7479", 400], ["double_take", "#E3A12C", "#1E272B", 600]].forEach(([k, fill, tc, w], j) => {
+      const v = l[k]; const x = x0 + j * 80; const h = 320 - y(v);
+      s += `<rect x="${x}" y="${y(v)}" width="70" height="${h}" rx="${h ? 6 : 0}" fill="${fill}"><title>${v} of ${n}</title></rect>
+        <text x="${x + 35}" y="${y(v) - 8}" text-anchor="middle" fill="${tc}" font-weight="${w}">${v}</text>`;
+    });
+    s += `<text x="${x0 + 75}" y="344" text-anchor="middle" fill="#1E272B">Review ${Math.round(l.review * 100)}% (${l.messages})</text>`;
+  });
+  $("#chart").innerHTML = s;
+  const t = TARGETS[target];
+  $("#lead").textContent = `${t.label}: ${t.desc} Each bar counts how many of the ${n} we catch when a human reviews the riskiest 5, 10 or 20% of the ${run.messages} messages.`;
+  $("#chartnote").textContent = n === 0 ? `There are no ${t.label.toLowerCase()} in this run, so there is nothing to catch. See the other views.` : "";
+  document.querySelectorAll("#targets button").forEach((b) => b.classList.toggle("on", b.dataset.t === target));
+  errors();
+}
+
+function table(el, data, title, titleEl) {
+  const modes = Object.keys(NAMES).filter((m) => data[m]);
+  const f = data.jev_only;
+  $(titleEl).textContent = title;
+  $(el).innerHTML = `<tr><th>Mode</th><th>Scams paid</th><th>Real bills held</th><th>Cost per message</th></tr>` + modes.map((m) => {
+    const d = data[m];
+    return `<tr><td>${m.startsWith("double_take") ? `<b>${NAMES[m]}</b>` : NAMES[m]}</td>
+      <td class="${d.scams_paid ? "bad" : "good"}">${d.scams_paid} of ${d.scams}</td>
+      <td class="${d.bills_held ? "bad" : ""}">${d.bills_held} of ${d.bills}</td><td>${usd(d.cost_per_message)}</td></tr>`;
+  }).join("");
+}
+
+function errors() {
+  const t = TARGETS[target];
+  const caught = run.catch[target].caught_at;
+  const rows = run.rows.filter((r) => r[t.key]).sort((a, b) => (caught[a.id] ?? 9) - (caught[b.id] ?? 9) || b.confidence - a.confidence);
+  $("#errtitle").textContent = `The ${rows.length} ${t.label.toLowerCase()}`;
+  $("#errs").innerHTML = rows.map((r) => {
+    const c = caught[r.id];
+    return `<div class="err"><code>${esc(r.id)}</code><span>${esc(r.note || r.sender)}<small>Jev ${esc(r.base_action)} ${r.confidence.toFixed(2)} · second opinion ${esc(r.llm_verdict || "–")} · brittleness ${r.brittleness.toFixed(2)}</small></span>
+      <span class="tag ${c ? "" : "miss"}">${c ? `caught at ${Math.round(c * 100)}%` : "missed"}</span></div>`;
+  }).join("") || `<div class="note">None in this run.</div>`;
+}
+
+function key() {
+  const a = run.all;
+  const cheap = a.double_take_jev;
+  const ratio = a.jev_llm.cost_per_message / cheap.cost_per_message;
+  $("#key").innerHTML = `
+    <div class="card"><b class="bad">${a.jev_only.scams_paid}</b><small>scams Jev alone would pay, of ${a.jev_only.scams}</small></div>
+    <div class="card"><b class="good">${cheap.scams_paid}</b><small>scams Double Take pays without the LLM, holding ${cheap.bills_held} real bills</small></div>
+    <div class="card"><b>${ratio.toFixed(1)}×</b><small>cheaper than Jev + LLM (${usd(cheap.cost_per_message)} vs ${usd(a.jev_llm.cost_per_message)} per message)</small></div>`;
+}
+
+async function main() {
+  const r = await fetch("/api/runs/latest");
+  if (!r.ok) { $("#badge").textContent = "No eval run yet. Run: python eval/run_eval.py"; return; }
+  run = await r.json();
+  $("#runmeta").textContent = `Evaluation, run ${run.run_id} on ${run.messages} messages, ${run.jev_model} and ${run.llm_model}`;
+  $("#badge").textContent = `Real run, ${run.created}. ${run.labels.bill} bills, ${run.labels.scam} scams, ${run.labels.none} no-action.`;
+  $("#targets").innerHTML = Object.entries(TARGETS).map(([k, t]) => `<button data-t="${k}">${t.label} (${run.catch[k].n_targets})</button>`).join("");
+  $("#targets").addEventListener("click", (e) => { if (e.target.dataset.t) { target = e.target.dataset.t; chart(); } });
+  target = run.catch.shared_confident.n_targets ? "shared_confident" : "jev_errors";
+  table("#gold", run.gold, `Gold set, ${run.sets.gold} messages, by mode`, "#goldtitle");
+  table("#all", run.all, `All ${run.messages} messages, by mode`, "#alltitle");
+  key();
+  chart();
+}
+main();
+</script>
+</body>
+</html>

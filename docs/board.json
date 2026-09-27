@@ -170,16 +170,16 @@
   {
     "id": 12,
     "title": "Eval UI page",
-    "status": "todo",
+    "status": "done",
     "priority": "medium",
     "level": 2,
     "rank": 12,
     "description": "web/eval.html drawn from data/runs latest: bar chart, gold table, shared confident errors list. Link back to stage.",
     "done_when": "Matches mockup, real numbers.",
-    "implementation_notes": null,
+    "implementation_notes": "web/eval.html from /api/runs/latest: bar chart low-conf vs DT risk with target selector (shared confident / confident / all Jev errors), gold + all tables incl. DT-no-LLM, key numbers, error list with caught-at. Browser-verified.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:11:07",
+    "completed_at": "2026-09-27 07:11:07"
   },
   {
     "id": 13,

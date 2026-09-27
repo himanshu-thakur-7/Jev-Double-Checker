@@ -50,3 +50,8 @@ def test_gate_requires_reference(client):
 
 def test_pages(client):
     assert client.get("/").status_code == 200 and client.get("/eval").status_code == 200
+
+
+def test_latest_run_available(client):
+    r = client.get("/api/runs/latest").json()
+    assert r["messages"] == 328 and "double_take_jev" in r["all"]

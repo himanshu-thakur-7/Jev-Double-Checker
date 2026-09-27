@@ -86,16 +86,16 @@
   {
     "id": 7,
     "title": "Cross-examination engine + 3 modes",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 3,
     "rank": 7,
     "description": "doubletake/engine.py: per message 4 Jev calls (one per rewrite) x 9 questions = 36 answers; base = R0/q0. Modes jev_only, jev_llm, double_take. Brittleness = share of prob mass of 35 re-asks against base action; hold if brittleness>tau(0.20) or any scam p>=0.7 or hard flag. Produces grid, reasons text, cost breakdown, alert card text.",
     "done_when": "Unit tests with fake Jev; live run on S01 yields Held in DT and Paid in jev_only.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/engine.py (see HANDOFF Run 6): 4x9 Jev answers, flags, LLM, 3 modes, brittleness, review risk; live on 30 msgs. Board move was missed in Run 6 and fixed in Run 15.",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 07:23:51",
+    "completed_at": "2026-09-27 07:23:51"
   },
   {
     "id": 16,

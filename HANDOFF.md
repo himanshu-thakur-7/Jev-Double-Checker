@@ -202,7 +202,7 @@ Architecture: `docs/ARCHITECTURE.md`.
   replays all 30 cached stage messages, serves `/` and `/eval` (the latest run), and answers the gate (S07 → deny). Live endpoints return a clear 503.
 - **Done:** README rewritten (real results table, quick start, how it works, repo map, re-run commands, Failproof/Codex). ARCHITECTURE.md now covers review risk,
   DT-without-LLM and the gate. The Starlette test-client deprecation warning is filtered in pyproject.
-- **State of the build:** every kanban card is done (see docs/BOARD.md). Stage, eval page, engine, 328-message eval, Failproof policy and hook, and the gated demo agent all work against the real APIs.
+- **State of the build:** every kanban card is done (card #7 was finished in Run 6, but its board move was missed until now) (see docs/BOARD.md). Stage, eval page, engine, 328-message eval, Failproof policy and hook, and the gated demo agent all work against the real APIs.
 
 ## Open items / ideas for whoever picks this up
 1. **Codex CLI and failproofai are not installed** on the dev machine. The stage button falls back to the built-in gpt-6-luna loop (it says so). To demo real Codex:

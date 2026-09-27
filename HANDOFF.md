@@ -268,3 +268,9 @@ live tool calls. New cards #17-#22 (see docs/BOARD.md).
 - **Verified:** pytest 92/92.
 - **Remaining, owner-gated:** #17 (run real Codex under real Failproof) needs the owner to run `failproofai config` + `failproofai jev setup`. The #21 publish needs owner OK.
   **Rehearsal** of DEMO.md end to end is the last step before 5:15 pm.
+
+### 2026-09-27 13:33 IST: Run 21 (rehearsal)
+- Rehearsed DEMO.md on a fresh server: **H** opens H6 (Jev-only pays at 0.75; Double Take holds, with the alert). "Run Codex under Failproof" (built-in runner, since Failproof isn't wired yet)
+  gave 6 ALLOW, then **S01, H6, H7, S07 each DENY → STEERED (ask_rahul)**, with an accurate final message, in ~25 s. The eval page shows reliability 5/5, 20/20 saves, 96% Jev-eval agreement.
+- **Loop stopped here.** Cards #18-#22 are done. Only owner-gated steps remain: #17 (`failproofai config` + `failproofai jev setup`, then run with
+  `DEMO_CODEX=failproof`) and publishing the pack.

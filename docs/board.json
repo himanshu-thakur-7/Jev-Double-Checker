@@ -58,16 +58,16 @@
   {
     "id": 5,
     "title": "Perturbation rewrites R0-R3",
-    "status": "todo",
+    "status": "done",
     "priority": "high",
     "level": 2,
     "rank": 5,
     "description": "doubletake/perturb.py: deterministic R0 Original, R1 Noisy text (typos/case/spacing, seeded), R2 Reshuffled (sentence order), R3 Plain text (strip urgency formatting, normalise). No LLM.",
     "done_when": "Tests: deterministic, preserves URLs/amounts/account ids.",
-    "implementation_notes": null,
+    "implementation_notes": "doubletake/perturb.py R0-R3 deterministic (seeded), protected tokens (digits/urls/@/sender ids) never altered; 33 new tests incl. fact preservation on all 28 msgs",
     "notes": "[]",
-    "updated_at": "2026-09-27 06:08:36",
-    "completed_at": null
+    "updated_at": "2026-09-27 06:30:47",
+    "completed_at": "2026-09-27 06:30:47"
   },
   {
     "id": 6,

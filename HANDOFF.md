@@ -72,3 +72,10 @@ Architecture: `docs/ARCHITECTURE.md`.
 - **Verified:** pytest 13/13 (counts, unique ids, label↔action consistency, biller refs, S01 header/domain not registered).
 - **Design note:** G06 (RWA from a personal number) is a genuine bill a cautious system may hold. That's the expected "1 of 6 real bills held".
 - **Next:** card #5, the perturbation rewrites R0-R3 (`doubletake/perturb.py`).
+
+### 2026-09-27 12:00 IST: Run 4 (card #5, perturbations)
+- **Done:** `doubletake/perturb.py`: `all_rewrites(text)` returns R0 Original, R1 Noisy text (seeded typos/case/spacing),
+  R2 Reshuffled (sentence order permuted, never identity), and R3 Plain text (no shouting, "!", urgency adverbs or salutations; one sentence per line;
+  brand acronyms kept via `ACRONYMS`). Any token with a digit, URL/domain, @ (UPI) or sender id is *protected*, so rewrites can't change the payee or amount.
+- **Verified:** pytest 46/46. The key test checks that `facts()` of every rewrite ⊇ facts of the original, for all 28 stage messages.
+- **Next:** card #6, deterministic risk signals (`doubletake/signals.py`).
